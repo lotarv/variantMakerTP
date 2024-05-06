@@ -92,7 +92,7 @@ namespace WinFormsApp1
                     mainPart.Document.Save();
                 }
 
-                MessageBox.Show("ƒокумент успешно создан или обновлен.");
+                MessageBox.Show("ƒокумент успешно создан или обновлен");
             }
 
 
