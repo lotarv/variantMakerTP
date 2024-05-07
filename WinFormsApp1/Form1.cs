@@ -51,53 +51,16 @@ namespace WinFormsApp1
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string filePath = saveFileDialog.FileName;
-                using (WordprocessingDocument wordDoc = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document))
-                {
-                    // Добавление основного документа
-                    MainDocumentPart mainPart = wordDoc.AddMainDocumentPart();
-                    mainPart.Document = new Document();
-                    Body body = mainPart.Document.AppendChild(new Body());
-
-                    // Добавление абзаца
-                    Paragraph para = body.AppendChild(new Paragraph());
-                    Run run = para.AppendChild(new Run());
-
-                    // Добавление текста
-                    run.AppendChild(new Text($"Создаем следующие задачи:\n\n"));
-
-                    para = body.AppendChild(new Paragraph());
-                    run = para.AppendChild(new Run());
-
-                    run.AppendChild(new Text("Глава 1"));
-
-                    para = body.AppendChild(new Paragraph());
-                    run = para.AppendChild(new Run());
-
-                    run.AppendChild(new Text($"{GenereationConfig.amount1_1} задач #1 и {GenereationConfig.amount1_2} задач #2"));
-
-                    para = body.AppendChild(new Paragraph());
-                    run = para.AppendChild(new Run());
-
-                    run.AppendChild(new Text("Глава 2"));
-
-                    para = body.AppendChild(new Paragraph());
-                    run = para.AppendChild(new Run());
-
-                    run.AppendChild(new Text($"{GenereationConfig.amount2_1} задач # 1 и {GenereationConfig.amount2_2} задач #2"));
-
-
-
-
-                    // Сохранение документа
-                    mainPart.Document.Save();
-                }
+                WordDocument wordDoc = new WordDocument(filePath);
+                wordDoc.newParagraph("hello world");
+                wordDoc.newParagraph("hello world ");
+                wordDoc.appendText("2");
+                wordDoc.closeDocument();
 
                 MessageBox.Show("Документ успешно создан или обновлен");
             }
-
-
-
-
         }
+
+
     }
 }

@@ -1,5 +1,9 @@
+using DocumentFormat.OpenXml;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 namespace WinFormsApp1
 {
+
     public class GenereationConfig
     {
         public static bool is1 = true;
@@ -19,6 +23,45 @@ namespace WinFormsApp1
         public static bool isConfigured = false;
 
 
+    }
+
+    
+    public class WordDocument
+    {
+        public WordprocessingDocument wordDoc;
+        private Body body;
+        private MainDocumentPart mainPart;
+        private Paragraph currentPara;
+        private Run currentRun;
+        public WordDocument(string filePath)
+        {
+            wordDoc = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document);
+            // Добавление основного документа
+            mainPart = wordDoc.AddMainDocumentPart();
+            mainPart.Document = new Document();
+            body = mainPart.Document.AppendChild(new Body());
+        }
+        public void appendText(string text)
+        {
+            currentRun.AppendChild(new Text(text));
+            mainPart.Document.Save();
+        }
+
+        public void newParagraph(string text)
+        {
+            currentPara = body.AppendChild(new Paragraph());
+            currentRun = currentPara.AppendChild(new Run());
+            currentRun.AppendChild(new Text(text));
+            mainPart.Document.Save();
+        }
+
+        public void closeDocument()
+        {
+           if (wordDoc != null)
+            {
+                wordDoc.Dispose();
+            }
+        }
     }
     internal static class Program
     {
