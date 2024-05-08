@@ -42,7 +42,7 @@ namespace WinFormsApp1
             }
             if (!is7)
             {
-                tabPage7.Enabled = false;
+                tabPage6.Enabled = false;
                 GenereationConfig.is7 = false;
             }
 
