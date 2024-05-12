@@ -20,3 +20,26 @@ C:\Users\essen\source\repos\WinFormsApp4\WinFormsApp1\obj\Debug\net6.0-windows7.
 C:\Users\essen\source\repos\WinFormsApp4\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.pdb
 C:\Users\essen\source\repos\WinFormsApp4\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.genruntimeconfig.cache
 C:\Users\essen\source\repos\WinFormsApp4\WinFormsApp1\obj\Debug\net6.0-windows7.0\ref\WinFormsApp1.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.csproj.AssemblyReference.cache
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.chapterSettings.resources
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.Form1.resources
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.csproj.GenerateResource.cache
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.AssemblyInfoInputs.cache
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.AssemblyInfo.cs
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.sourcelink.json
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\refint\WinFormsApp1.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.pdb
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\WinFormsApp1.exe
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\WinFormsApp1.deps.json
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\WinFormsApp1.runtimeconfig.json
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\WinFormsApp1.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\WinFormsApp1.pdb
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\DocumentFormat.OpenXml.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\DocumentFormat.OpenXml.Framework.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\System.IO.Packaging.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.csproj.CopyComplete
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\WinFormsApp1.genruntimeconfig.cache
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\obj\Debug\net6.0-windows7.0\ref\WinFormsApp1.dll

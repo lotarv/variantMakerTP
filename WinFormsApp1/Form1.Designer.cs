@@ -35,8 +35,8 @@
             chapter4Check = new CheckBox();
             chapter5Check = new CheckBox();
             chapter7Check = new CheckBox();
-            button1 = new Button();
-            button2 = new Button();
+            configBtn = new Button();
+            generateBtn = new Button();
             SuspendLayout();
             // 
             // label1
@@ -108,33 +108,33 @@
             chapter7Check.Text = "Глава 7 - Важнейшие законы распределения непрерывных случайных величин";
             chapter7Check.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // configBtn
             // 
-            button1.Location = new Point(67, 439);
-            button1.Name = "button1";
-            button1.Size = new Size(274, 61);
-            button1.TabIndex = 7;
-            button1.Text = "Перейти к настройке глав";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            configBtn.Location = new Point(67, 439);
+            configBtn.Name = "configBtn";
+            configBtn.Size = new Size(274, 61);
+            configBtn.TabIndex = 7;
+            configBtn.Text = "Перейти к настройке глав";
+            configBtn.UseVisualStyleBackColor = true;
+            configBtn.Click += configBtn_Click;
             // 
-            // button2
+            // generateBtn
             // 
-            button2.Location = new Point(456, 439);
-            button2.Name = "button2";
-            button2.Size = new Size(274, 61);
-            button2.TabIndex = 8;
-            button2.Text = "Генерация задач\r\n";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            generateBtn.Location = new Point(456, 439);
+            generateBtn.Name = "generateBtn";
+            generateBtn.Size = new Size(274, 61);
+            generateBtn.TabIndex = 8;
+            generateBtn.Text = "Генерация задач\r\n";
+            generateBtn.UseVisualStyleBackColor = true;
+            generateBtn.Click += generateBtn_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(12F, 30F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(909, 637);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(generateBtn);
+            Controls.Add(configBtn);
             Controls.Add(chapter7Check);
             Controls.Add(chapter5Check);
             Controls.Add(chapter4Check);
@@ -142,7 +142,7 @@
             Controls.Add(chapter2Check);
             Controls.Add(chapter1Check);
             Controls.Add(label1);
-            Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(5, 6, 5, 6);
             Name = "Form1";
             Text = "Form1";
@@ -160,7 +160,7 @@
         private CheckBox chapter4Check;
         private CheckBox chapter5Check;
         private CheckBox chapter7Check;
-        private Button button1;
-        private Button button2;
+        private Button configBtn;
+        private Button generateBtn;
     }
 }

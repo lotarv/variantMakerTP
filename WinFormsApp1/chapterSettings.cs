@@ -78,9 +78,39 @@ namespace WinFormsApp1
                 {
                     GenereationConfig.amount2_1 = Convert.ToInt32(inputAmount2_1.Text);
                     GenereationConfig.amount2_2 = Convert.ToInt32(inputAmount2_2.Text);
+                    GenereationConfig.amount2_3 = Convert.ToInt32(inputAmount2_3.Text);
                 }
 
-                //TODO : Добавить остальные главы
+                if (GenereationConfig.is3)
+                {
+                    GenereationConfig.amount3_1 = Convert.ToInt32(inputAmount3_1.Text);
+                    GenereationConfig.amount3_2 = Convert.ToInt32(inputAmount3_2.Text);
+                    GenereationConfig.amount3_3 = Convert.ToInt32(inputAmount3_3.Text);
+                }
+
+                if (GenereationConfig.is4)
+                {
+                    GenereationConfig.amount4_1 = Convert.ToInt32(inputAmount4_1.Text);
+                    GenereationConfig.amount4_2 = Convert.ToInt32(inputAmount4_2.Text);
+                    GenereationConfig.amount4_3 = Convert.ToInt32(inputAmount4_3.Text);
+                }
+
+                if (GenereationConfig.is5)
+                {
+                    GenereationConfig.amount5_1 = Convert.ToInt32(inputAmount5_1.Text);
+                    GenereationConfig.amount5_2 = Convert.ToInt32(inputAmount5_2.Text);
+                    GenereationConfig.amount5_3 = Convert.ToInt32(inputAmount5_3.Text);
+                    GenereationConfig.amount5_4 = Convert.ToInt32(inputAmount5_4.Text);
+                }
+
+                if (GenereationConfig.is7)
+                {
+                    GenereationConfig.amount7_1 = Convert.ToInt32(inputAmount4_1.Text);
+                    GenereationConfig.amount7_2 = Convert.ToInt32(inputAmount4_2.Text);
+                    GenereationConfig.amount7_3 = Convert.ToInt32(inputAmount4_3.Text);
+                }
+
+
 
                 GenereationConfig.isConfigured = true;
                 this.Close();

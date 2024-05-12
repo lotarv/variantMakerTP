@@ -1,5 +1,4 @@
 ﻿using DocumentFormat.OpenXml;
-using DocumentFormat.OpenXml.Office2016.Drawing.ChartDrawing;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Collections;
@@ -22,11 +21,25 @@ namespace WinFormsApp1
         public static int amount1_2 = 0;
         public static int amount2_1 = 0;
         public static int amount2_2 = 0;
+        public static int amount2_3 = 0;
+        public static int amount3_1 = 0;
+        public static int amount3_2 = 0;
+        public static int amount3_3 = 0;
+        public static int amount4_1 = 0;
+        public static int amount4_2 = 0;
+        public static int amount4_3 = 0;
+        public static int amount5_1 = 0;
+        public static int amount5_2 = 0;
+        public static int amount5_3 = 0;
+        public static int amount5_4 = 0;
+        public static int amount7_1 = 0;
+        public static int amount7_2 = 0;
+        public static int amount7_3 = 0;
+
 
         //TODO : Добавить остальные главы
 
         public static bool isConfigured = false;
-
 
     }
 

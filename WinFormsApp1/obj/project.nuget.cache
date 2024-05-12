@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "FE/WoCwFn4pRwRp59lsRQoiaSmKNr9l0LE6Zi18eUw3Nu3dJn661Qd/n55JgL3tpV+D1ydkVPFD/TvuMWv9n2w==",
+  "dgSpecHash": "dwY1deQVk1lBhkjkwrzeX2RsVF0LlkqQEn/8tJWZLVNp6tIkVj7bT2yeaSJYVRiRuOdS8cNrkRHvs0PODM7X+Q==",
   "success": true,
-  "projectFilePath": "C:\\Users\\essen\\source\\repos\\WinFormsApp4\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "C:\\Users\\Sergey\\Visual Studio\\C#\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\essen\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
-    "C:\\Users\\essen\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
-    "C:\\Users\\essen\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
+    "C:\\Users\\Sergey\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
+    "C:\\Users\\Sergey\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
+    "C:\\Users\\Sergey\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }
