@@ -7,7 +7,9 @@ namespace WinFormsApp1
     public partial class Form1 : Form
     {
         private string filePath;
+        private int currentNumber = 1;
         WordDocument wordDoc;
+        WordDocument wordDocAnswers;
         public Form1()
         {
             InitializeComponent();
@@ -65,9 +67,13 @@ namespace WinFormsApp1
 
         private void generate()
         {
-
+            //Создание документов - вариант и ответы
             wordDoc = new WordDocument(filePath);
+            string filePathAnswers = filePath.Substring(0, filePath.LastIndexOf('.'));
+            filePathAnswers += "Ответы.docx";
+            wordDocAnswers = new WordDocument(filePathAnswers);
             wordDoc.newParagraph("generating next variant:");
+
             if (GenereationConfig.is1)
             {
                 generateChapter1();
@@ -100,38 +106,142 @@ namespace WinFormsApp1
 
             //Закрытие документа
             wordDoc.closeDocument();
+            wordDocAnswers.closeDocument();
 
 
         }
 
         private void generateChapter1()
         {
-            wordDoc.newParagraph("1");
+            //Задание 1 - пока не сделано
+
+            //Задание 2 - пока не сделано
+
         }
 
         private void generateChapter2()
         {
-            wordDoc.newParagraph("2");
+            //1 задание - пока не сделано
+
+            //2 задание  
+            for (int i = 0; i < GenereationConfig.amount2_2; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task2_2 = Tasks.task2_2_generate();
+                wordDoc.appendText(task2_2.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task2_2.Item2);
+            }
+
+            // 3 задание
+            for (int i = 0; i < GenereationConfig.amount2_3; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task2_3 = Tasks.task2_3_generate();
+                wordDoc.appendText(task2_3.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task2_3.Item2);
+            }
+
+
         }
 
         private void generateChapter3()
         {
-            wordDoc.newParagraph("3");
+            //1 задание
+            for (int i = 0; i < GenereationConfig.amount3_1; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task3_1 = Tasks.task3_1_generate();
+                wordDoc.appendText(task3_1.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task3_1.Item2);
+            }
+            //2 задание  - пока не сделано
+
+
+            // 3 задание
+            for (int i = 0; i < GenereationConfig.amount3_3; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task3_3 = Tasks.task3_3_generate();
+                wordDoc.appendText(task3_3.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task3_3.Item2);
+            }
         }
 
         private void generateChapter4()
         {
-            wordDoc.newParagraph("4");
+            //Задание 1
+            for (int i = 0; i < GenereationConfig.amount4_1; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task4_1 = Tasks.task4_1_generate();
+                wordDoc.appendText(task4_1.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task4_1.Item2);
+            }
+
+            //Задание 2 - пока не сделано
+
+            //Задание 3
+
+            for (int i = 0; i < GenereationConfig.amount4_3; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task4_3 = Tasks.task4_3_generate();
+                wordDoc.appendText(task4_3.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task4_3.Item2);
+            }
         }
 
         private void generateChapter5()
         {
-            wordDoc.newParagraph("5");
+            //Задание 1
+
+            for (int i = 0; i < GenereationConfig.amount5_1; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task5_1 = Tasks.task5_1_generate();
+                wordDoc.appendText(task5_1.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task5_1.Item2);
+            }
+
+            //Задание 2
+            for (int i = 0; i < GenereationConfig.amount5_2; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task5_2 = Tasks.task5_2_generate();
+                wordDoc.appendText(task5_2.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task5_2.Item2);
+            }
+
+            //Задание 3 - пока не сделано
+
+
+            //Задание 4
+            for (int i = 0; i < GenereationConfig.amount5_4; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task5_4 = Tasks.task5_4_generate();
+                wordDoc.appendText(task5_4.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task5_4.Item2);
+            }
         }
 
         private void generateChapter7()
         {
-            wordDoc.newParagraph("7");
+            //Задание 1 - пока не сделано
+
+            //Задание 2 - пока не сделано
+
+            //Задание 3 - пока не сделано
+
         }
     }
 }

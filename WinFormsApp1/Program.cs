@@ -43,6 +43,46 @@ namespace WinFormsApp1
 
     }
 
+    public class WordDocument
+    {
+        public WordprocessingDocument wordDoc;
+        private Body body;
+        private MainDocumentPart mainPart;
+        private Paragraph currentPara;
+        private Run currentRun;
+        public WordDocument(string filePath)
+        {
+            wordDoc = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document);
+            // Добавление основного документа
+            mainPart = wordDoc.AddMainDocumentPart();
+            mainPart.Document = new Document();
+            body = mainPart.Document.AppendChild(new Body());
+        }
+        public void appendText(string text)
+        {
+            currentRun.AppendChild(new Text(text));
+            mainPart.Document.Save();
+        }
+
+        public void newParagraph(string text)
+        {
+            currentPara = body.AppendChild(new Paragraph());
+            currentRun = currentPara.AppendChild(new Run());
+            currentRun.AppendChild(new Text(text));
+            mainPart.Document.Save();
+        }
+
+        public void closeDocument()
+        {
+            if (wordDoc != null)
+            {
+                wordDoc.Dispose();
+            }
+        }
+    }
+
+
+
     public class Tasks
     {
         private static Random rnd = new Random();
@@ -563,43 +603,7 @@ namespace WinFormsApp1
         }
     }
 
-    public class WordDocument
-    {
-        public WordprocessingDocument wordDoc;
-        private Body body;
-        private MainDocumentPart mainPart;
-        private Paragraph currentPara;
-        private Run currentRun;
-        public WordDocument(string filePath)
-        {
-            wordDoc = WordprocessingDocument.Create(filePath, WordprocessingDocumentType.Document);
-            // Добавление основного документа
-            mainPart = wordDoc.AddMainDocumentPart();
-            mainPart.Document = new Document();
-            body = mainPart.Document.AppendChild(new Body());
-        }
-        public void appendText(string text)
-        {
-            currentRun.AppendChild(new Text(text));
-            mainPart.Document.Save();
-        }
 
-        public void newParagraph(string text)
-        {
-            currentPara = body.AppendChild(new Paragraph());
-            currentRun = currentPara.AppendChild(new Run());
-            currentRun.AppendChild(new Text(text));
-            mainPart.Document.Save();
-        }
-
-        public void closeDocument()
-        {
-           if (wordDoc != null)
-            {
-                wordDoc.Dispose();
-            }
-        }
-    }
     internal static class Program
     {
         /// <summary>
