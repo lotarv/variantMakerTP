@@ -122,6 +122,16 @@ namespace WinFormsApp1
         {
             //1 задание - пока не сделано
 
+            for (int i = 0; i < GenereationConfig.amount2_1; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string> task2_1 = Tasks.task2_1_generate();
+                wordDoc.appendText(task2_1.Item1);
+
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task2_1.Item2);
+            }
+
             //2 задание  
             for (int i = 0; i < GenereationConfig.amount2_2; i++)
             {
@@ -133,17 +143,17 @@ namespace WinFormsApp1
                 wordDocAnswers.newParagraph(task2_2.Item2);
             }
 
-            // 3 задание
-            for (int i = 0; i < GenereationConfig.amount2_3; i++)
-            {
-                wordDoc.newParagraph(currentNumber.ToString() + ". ");
-                Tuple<string, string> task2_3 = Tasks.task2_3_generate();
-                wordDoc.appendText(task2_3.Item1);
-                //Картинка
-                wordDoc.InsertAPicture("assets/Рисунок5.jpg");
-                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
-                wordDocAnswers.newParagraph(task2_3.Item2);
-            }
+            //// 3 задание
+            //for (int i = 0; i < GenereationConfig.amount2_3; i++)
+            //{
+            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
+            //    Tuple<string, string> task2_3 = Tasks.task2_3_generate();
+            //    wordDoc.appendText(task2_3.Item1);
+            //    //Картинка
+            //    wordDoc.InsertAPicture("assets/Рисунок5.jpg");
+            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+            //    wordDocAnswers.newParagraph(task2_3.Item2);
+            //}
 
 
         }
@@ -203,40 +213,40 @@ namespace WinFormsApp1
         {
             //Задание 1
 
-            for (int i = 0; i < GenereationConfig.amount5_1; i++)
-            {
-                wordDoc.newParagraph(currentNumber.ToString() + ". ");
-                Tuple<string, string> task5_1 = Tasks.task5_1_generate();
-                wordDoc.appendText(task5_1.Item1);
-                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
-                wordDocAnswers.newParagraph(task5_1.Item2);
-            }
+            //for (int i = 0; i < GenereationConfig.amount5_1; i++)
+            //{
+            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
+            //    Tuple<string, string> task5_1 = Tasks.task5_1_generate();
+            //    wordDoc.appendText(task5_1.Item1);
+            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+            //    wordDocAnswers.newParagraph(task5_1.Item2);
+            //}
 
             //Задание 2
-            for (int i = 0; i < GenereationConfig.amount5_2; i++)
-            {
-                wordDoc.newParagraph(currentNumber.ToString() + ". ");
-                Tuple<string, string> task5_2 = Tasks.task5_2_generate();
-                wordDoc.appendText(task5_2.Item1);
-                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
-                wordDocAnswers.newParagraph(task5_2.Item2);
+            //for (int i = 0; i < GenereationConfig.amount5_2; i++)
+            //{
+            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
+            //    Tuple<string, string> task5_2 = Tasks.task5_2_generate();
+            //    wordDoc.appendText(task5_2.Item1);
+            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+            //    wordDocAnswers.newParagraph(task5_2.Item2);
 
-                double[,] matrix = new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-                wordDoc.createTable(new string[] { "x", "y", "z" }, matrix);
-            }
+            //    double[,] matrix = new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+            //    wordDoc.createTable(new string[] { "x", "y", "z" }, matrix);
+            //}
 
             //Задание 3 - пока не сделано
 
 
             //Задание 4
-            for (int i = 0; i < GenereationConfig.amount5_4; i++)
-            {
-                wordDoc.newParagraph(currentNumber.ToString() + ". ");
-                Tuple<string, string> task5_4 = Tasks.task5_4_generate();
-                wordDoc.appendText(task5_4.Item1);
-                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
-                wordDocAnswers.newParagraph(task5_4.Item2);
-            }
+            //for (int i = 0; i < GenereationConfig.amount5_4; i++)
+            //{
+            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
+            //    Tuple<string, string> task5_4 = Tasks.task5_4_generate();
+            //    wordDoc.appendText(task5_4.Item1);
+            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+            //    wordDocAnswers.newParagraph(task5_4.Item2);
+            //}
         }
 
         private void generateChapter7()

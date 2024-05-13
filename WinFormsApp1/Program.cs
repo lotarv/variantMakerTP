@@ -8,7 +8,6 @@ using DW = DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using PIC = DocumentFormat.OpenXml.Drawing.Pictures;
 using System.Collections;
 
-
 namespace WinFormsApp1
 {
 
@@ -284,7 +283,7 @@ namespace WinFormsApp1
         {
             Random rnd = new Random();
             bool a_term;
-            if (rnd.Next(0, 1) == 0)
+            if (rnd.Next(0, 2) == 0)
                 a_term = false;
             else
                 a_term = true;
@@ -310,13 +309,13 @@ namespace WinFormsApp1
             if (a_term)
             {
                 for (int i = 0; i < 6; i++)
-                    if ((i + 1) / 2 == 0)
+                    if ((i + 1) % 2 == 0)
                         A[i] = true;
             }
             else
             {
                 for (int i = 0; i < 6; i++)
-                    if ((i + 1) / 2 == 1)
+                    if ((i + 1) % 2 == 1)
                         A[i] = true;
             }
 
@@ -328,8 +327,67 @@ namespace WinFormsApp1
                     C[i] = true;
             }
 
-            // Потом доделаю
-            return null;
+            BitArray answer1 = new BitArray(A);
+            answer1.And(B);
+            answer1.And(C);
+
+            string answer = "Ответы:\n";
+            answer += "а) {";
+
+            bool first = true;
+            for (int i = 0; i < 6; i++)
+            {
+                if (answer1[i] == true)
+                {
+                    if (first)
+                    {
+                        answer += (i + 1).ToString();
+                        first = false;
+                    }
+                    else
+                        answer += ", " + (i + 1).ToString();
+                }
+            }
+            answer += "}; б) {";
+
+            BitArray answer2 = new BitArray(A);
+            answer1.Or(B);
+
+            first = true;
+            for (int i = 0; i < 6; i++)
+            {
+                if (answer2[i] == true)
+                {
+                    if (first)
+                    {
+                        answer += (i + 1).ToString();
+                        first = false;
+                    }
+                    else
+                        answer += ", " + (i + 1).ToString();
+                }
+            }
+            answer += "}; в) {";
+
+            BitArray answer3 = new BitArray(A.Not());
+            answer3.And(B);
+
+            first = true;
+            for (int i = 0; i < 6; i++)
+            {
+                if (answer3[i] == true)
+                {
+                    if (first)
+                    {
+                        answer += (i + 1).ToString();
+                        first = false;
+                    }
+                    else
+                        answer += ", " + (i + 1).ToString();
+                }
+            }
+            answer += "}";
+            return new Tuple<string, string> (task, answer);
         }
 
         public static Tuple<string, string> task2_2_generate()
@@ -342,9 +400,9 @@ namespace WinFormsApp1
                "того, что в среду:\r\n а) на репетицию опоздают и режиссер, " +
                "и актриса;\r\n б) опоздает только актриса;\r\n в) никто не опоздает?\r\n";
 
-            string answers = "а) " + prob_dir * prob_act + "\n" +
-                "б) " + prob_act * (1 - prob_dir) + "\n" +
-                "в) " + (1 - prob_dir) * (1 - prob_act);
+            string answers = "а) " + Math.Round(prob_dir * prob_act, 4) + "\n" +
+                "б) " + Math.Round(prob_act * (1 - prob_dir), 4) + "\n" +
+                "в) " + Math.Round((1 - prob_dir) * (1 - prob_act), 4);
 
             return new Tuple<string, string>(task, answers);
         }
@@ -357,7 +415,7 @@ namespace WinFormsApp1
                 "элемент выходит из строя с вероятностью " + prob + ". " +
                 "Найти вероятность того, что в момент включения цепь не разомкнется";
 
-            string answer = ((1 - prob * prob) * (1 - prob) * (1 - prob * prob)).ToString();
+            string answer = Math.Round((1 - prob * prob) * (1 - prob) * (1 - prob * prob), 4).ToString();
 
             return new Tuple<string, string>(task, answer);
         }
@@ -478,13 +536,13 @@ namespace WinFormsApp1
                 "равна " + prob + ". Какова вероятность того, что в " +
                 "течение часа нить оборвется на " + k + " веретенах?";
 
-            string answer = "(" + lambda + "^" + k + "*e^" + (-lambda) + ")/(" + k + "!) ~ "
+            string answer = "(" + lambda + "^" + k + "*e^" + (-lambda) + ")/(" + k + "!) ≈ "
                 + Math.Round((Math.Pow(lambda, k) * Math.Exp(-lambda)) / factorial(k), 4).ToString();
 
             return new Tuple<string, string>(task, answer);
         }
 
-        public static Tuple<string, string> task5_1_generate()
+        public static Tuple<string, string, string[], string[,]> task5_1_generate()
         {
             double prob = (double)(rnd.Next(1, 10)) / 10;
             int n = 5;
@@ -520,16 +578,7 @@ namespace WinFormsApp1
             DX -= Math.Pow(MX, 2);
             double sX = Math.Sqrt(DX);
 
-            string answer = "X\t";
-
-            for (int i = 0; i < n; i++)
-                answer += (i + 1).ToString() + "\t";
-            answer += "\np\t";
-            foreach (double x in distribution_series)
-            {
-                answer += (Math.Round(x, 4).ToString() + "\t");
-            }
-            answer += "\nM(X) = " + Math.Round(MX, 4).ToString()
+            string answer = "M(X) = " + Math.Round(MX, 4).ToString()
                 + "\nD(X) = " + Math.Round(DX, 4).ToString()
                 + "\ns(X) = " + Math.Round(sX, 4).ToString();
             
@@ -552,10 +601,19 @@ namespace WinFormsApp1
                 + Math.Round(F[3], 4) + "\t, 4 < X < 5;\n\t"
                 + "1\t, X > 5\n\t}";
 
-            return new Tuple<string, string>(task, answer);
+            string[] answer_table_headers = { "X", "p" };
+
+            string[,] answer_table_matrix = new string[2, n];
+            for (int i = 0; i < n; i++)
+                answer_table_matrix[0, i] = (i + 1).ToString();
+
+            for (int i = 0; i < n; i++)
+                answer_table_matrix[1, i] = (Math.Round(distribution_series[i], 4).ToString());
+
+            return new Tuple<string, string, string[], string[,]>(task, answer, answer_table_headers, answer_table_matrix);
         }
 
-        public static Tuple<string, string> task5_2_generate()
+        public static Tuple<string, string, string[], string[,]> task5_2_generate()
         {
             double prob = (double)(rnd.Next(1, 10)) / 10;
             int n = 5;
@@ -585,22 +643,24 @@ namespace WinFormsApp1
             }
             DX -= Math.Pow(MX, 2);
 
-            string answer = "X\t";
-
-            for (int i = 0; i < n + 1; i++)
-                answer += i.ToString() + "\t";
-            answer += "\np\t";
-            foreach (double x in distribution_series)
-            {
-                answer += (Math.Round(x, 4).ToString() + "\t");
-            }
-            answer += "\nM(X) = " + Math.Round(MX, 4).ToString()
+            string answer = "M(X) = " + Math.Round(MX, 4).ToString()
                 + "\nD(X) = " + Math.Round(DX, 4).ToString();
 
-            return new Tuple<string, string>(task, answer);
+            string[] answer_table_headers = { "X", "p" };
+
+            string[,] answer_table_matrix = new string[2, n];
+            for (int i = 0; i < n; i++)
+                answer_table_matrix[0, i] = (i + 1).ToString();
+            
+            for (int i = 0; i < n; i++)
+            {
+                answer_table_matrix[1, i] = (Math.Round(distribution_series[i], 4).ToString());
+            }
+
+            return new Tuple<string, string, string[], string[,]>(task, answer, answer_table_headers, answer_table_matrix);
         }
 
-        public static Tuple<string, string> task5_4_generate()
+        public static Tuple<string, string, string[,], string[,], string[,], string[,], string> task5_4_generate()
         {
             List<int> x_values = new List<int> { 2, 4, 5 };
             List<int> y_values = new List<int> { -1, 1 };
@@ -611,10 +671,22 @@ namespace WinFormsApp1
 
             List<double> px = new List<double> { px1, px2, px3 };
 
+            string[,] task_matrix_X = new string[2, 3];
+            for (int i = 0; i < 3; i++)
+                task_matrix_X[0, i] = x_values[i].ToString();
+            for (int i = 0; i < 3; i++)
+                task_matrix_X[1, i] = px[i].ToString();
+
             double py1 = Math.Round((double)(rnd.Next(1, 10)) / 10, 1);
             double py2 = Math.Round(1 - py1, 1);
 
             List<double> py = new List<double> { py1, py2 };
+
+            string[,] task_matrix_Y = new string[2, 3];
+            for (int i = 0; i < 3; i++)
+                task_matrix_Y[0, i] = y_values[i].ToString();
+            for (int i = 0; i < 3; i++)
+                task_matrix_Y[1, i] = py[i].ToString();
 
             string task = "Независимые случайные величины X и Y " +
                 "заданы таблицами распределений.\r\nНайти:\r\n" +
@@ -623,26 +695,6 @@ namespace WinFormsApp1
                 "3) M(Z_1), M(Z_2), D(Z_1), D(Z_2) непосредственно по " +
                 "таблицам распределений и на основании свойств " +
                 "математического ожидания и дисперсии.\r\n";
-            task += "X\t";
-            for (int i = 0; i < px.Count; i++)
-            {
-                task += x_values[i].ToString() + "\t";
-            }
-            task += "\ty\t";
-            for (int i = 0; i < py.Count; i++)
-            {
-                task += y_values[i].ToString() + "\t";
-            }
-            task += "\np\t";
-            for (int i = 0; i < px.Count; i++)
-            {
-                task += px[i].ToString() + "\t";
-            }
-            task += "\tp\t";
-            for (int i = 0; i < py.Count; i++)
-            {
-                task += py[i].ToString() + "\t";
-            }
 
             double MX = 0.0;
             for (int i = 0; i < px.Count; i++)
@@ -681,6 +733,7 @@ namespace WinFormsApp1
             }
             z1_values = z1_values.Distinct().ToList();
             z1_values.Sort();
+
             List<int> z2_values = new List<int>();
             for (int i = 0; i < x_values.Count; i++)
             {
@@ -711,15 +764,14 @@ namespace WinFormsApp1
                     }
                 }
             }
-            answer += "2)";
-            answer += "\nz1\t";
-            foreach (int i in z1_values)
-                answer += i.ToString() + "\t";
-            answer += "\np\t";
-            foreach (double x in pz1)
-            {
-                answer += Math.Round(x, 4).ToString() + "\t";
-            }
+            answer += "2)\n";
+
+            string[,] answer_matrix_Z1 = new string[2, 3];
+            for (int i = 0; i < 3; i++)
+                answer_matrix_Z1[0, i] = z1_values[i].ToString();
+            for (int i = 0; i < 3; i++)
+                answer_matrix_Z1[1, i] = pz1[i].ToString();
+
             List<double> pz2 = new List<double>();
             foreach (int x in z2_values)
             {
@@ -739,15 +791,13 @@ namespace WinFormsApp1
                     }
                 }
             }
-            answer +="\n\nz2\t";
-            foreach (int i in z2_values)
-                answer += i.ToString() + "\t";
-            answer += "\np\t";
-            foreach (double x in pz2)
-            {
-                answer += Math.Round(x, 4).ToString() + "\t";
-            }
-            answer += "\n";
+
+            string[,] answer_matrix_Z2 = new string[2, 3];
+            for (int i = 0; i < 3; i++)
+                answer_matrix_Z2[0, i] = z2_values[i].ToString();
+            for (int i = 0; i < 3; i++)
+                answer_matrix_Z2[1, i] = pz2[i].ToString();
+
             double MZ1 = 0.0;
             for (int i = 0; i < pz1.Count; i++)
             {
@@ -772,12 +822,13 @@ namespace WinFormsApp1
             }
             DZ2 -= Math.Pow(MZ2, 2);
 
-            answer += "\n3)\nM(Z1) = " + Math.Round(MZ1, 4) +
+            string answer2 = "\n3)\nM(Z1) = " + Math.Round(MZ1, 4) +
                 ", M(Z2) = " + Math.Round(MZ2, 4) +
                 ", D(Z1) = " + Math.Round(DZ1, 4) +
                 ", D(Z2) = " + Math.Round(DZ2, 4);
 
-            return new Tuple<string, string>(task, answer);
+            return new Tuple<string, string, string[,], string[,], string[,], string[,], string>
+                (task, answer, task_matrix_X, task_matrix_Y, answer_matrix_Z1, answer_matrix_Z2, answer2);
         }
     }
 
