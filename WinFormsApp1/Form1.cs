@@ -220,6 +220,9 @@ namespace WinFormsApp1
                 wordDoc.appendText(task5_2.Item1);
                 wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
                 wordDocAnswers.newParagraph(task5_2.Item2);
+
+                double[,] matrix = new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+                wordDoc.createTable(new string[] { "x", "y", "z" }, matrix);
             }
 
             //Задание 3 - пока не сделано

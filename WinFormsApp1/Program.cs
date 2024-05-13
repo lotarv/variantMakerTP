@@ -162,6 +162,94 @@ namespace WinFormsApp1
             // Append the reference to body, the element should be in a Run.
             wordDoc.MainDocumentPart.Document.Body.AppendChild(new Paragraph(new Run(element)));
         }
+
+        public void createTable(string[] headers, double[,] matrix)
+        {
+            // Create an empty table.
+            Table table = new Table();
+
+            // Create a TableProperties object and specify its border information.
+            TableProperties tblProp = new TableProperties(
+                new TableBorders(
+                    new TopBorder()
+                    {
+                        Val =
+                        new EnumValue<BorderValues>(BorderValues.ClassicalWave),
+                        Size = 12
+                    },
+                    new BottomBorder()
+                    {
+                        Val =
+                        new EnumValue<BorderValues>(BorderValues.ClassicalWave),
+                        Size = 12
+                    },
+                    new LeftBorder()
+                    {
+                        Val =
+                        new EnumValue<BorderValues>(BorderValues.ClassicalWave),
+                        Size = 12
+                    },
+                    new RightBorder()
+                    {
+                        Val =
+                        new EnumValue<BorderValues>(BorderValues.ClassicalWave),
+                        Size = 12
+                    },
+                    new InsideHorizontalBorder()
+                    {
+                        Val =
+                        new EnumValue<BorderValues>(BorderValues.ClassicalWave),
+                        Size = 12
+                    },
+                    new InsideVerticalBorder()
+                    {
+                        Val =
+                        new EnumValue<BorderValues>(BorderValues.ClassicalWave),
+                        Size = 12
+                    }
+                )
+            );
+
+            // Append the TableProperties object to the empty table.
+            table.AppendChild<TableProperties>(tblProp);
+
+
+            //TableRow tr = new TableRow();
+
+
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                TableRow tr = new TableRow();
+                TableCell rowHeader = new TableCell();
+                rowHeader.Append(new TableCellProperties(
+                        new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "1200" }));
+                rowHeader.Append(new Paragraph(new Run(new Text(headers[i]))));
+                tr.Append(rowHeader);
+
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+
+                    TableCell tc = new TableCell();
+                    tc.Append(new TableCellProperties(
+                        new TableCellWidth() { Type = TableWidthUnitValues.Dxa, Width = "1200" }));
+                    tc.Append(new Paragraph(new Run(new Text(matrix[i, j].ToString()))));
+                    tr.Append(tc);
+
+                }
+                table.Append(tr);
+            }
+
+            if (wordDoc.MainDocumentPart is null || wordDoc.MainDocumentPart.Document.Body is null)
+            {
+                throw new ArgumentNullException("MainDocumentPart and/or Body is null.");
+            }
+
+            // Append the table to the document.
+            wordDoc.MainDocumentPart.Document.Body.Append(table);
+            mainPart.Document.Save();
+        }
+
         public void closeDocument()
         {
             if (wordDoc != null)
