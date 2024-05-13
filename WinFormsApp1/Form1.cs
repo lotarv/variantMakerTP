@@ -40,7 +40,6 @@ namespace WinFormsApp1
                 return;
             }
 
-            //Заполнение документа с задачами: (TEST VERSION)
 
             // Открытие диалогового окна выбора файла
             SaveFileDialog saveFileDialog = new SaveFileDialog
@@ -129,6 +128,7 @@ namespace WinFormsApp1
                 wordDoc.newParagraph(currentNumber.ToString() + ". ");
                 Tuple<string, string> task2_2 = Tasks.task2_2_generate();
                 wordDoc.appendText(task2_2.Item1);
+                
                 wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
                 wordDocAnswers.newParagraph(task2_2.Item2);
             }
@@ -139,6 +139,8 @@ namespace WinFormsApp1
                 wordDoc.newParagraph(currentNumber.ToString() + ". ");
                 Tuple<string, string> task2_3 = Tasks.task2_3_generate();
                 wordDoc.appendText(task2_3.Item1);
+                //Картинка
+                wordDoc.InsertAPicture("assets/Рисунок5.jpg");
                 wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
                 wordDocAnswers.newParagraph(task2_3.Item2);
             }

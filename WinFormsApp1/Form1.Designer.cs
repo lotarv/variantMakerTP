@@ -44,7 +44,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(24, 39);
             label1.Name = "label1";
-            label1.Size = new Size(174, 30);
+            label1.Size = new Size(222, 37);
             label1.TabIndex = 0;
             label1.Text = "Выберите главы:";
             // 
@@ -53,7 +53,7 @@
             chapter1Check.AutoSize = true;
             chapter1Check.Location = new Point(24, 89);
             chapter1Check.Name = "chapter1Check";
-            chapter1Check.Size = new Size(275, 34);
+            chapter1Check.Size = new Size(354, 41);
             chapter1Check.TabIndex = 1;
             chapter1Check.Text = "Глава 1 - Комбинаторика";
             chapter1Check.UseVisualStyleBackColor = true;
@@ -63,7 +63,7 @@
             chapter2Check.AutoSize = true;
             chapter2Check.Location = new Point(24, 147);
             chapter2Check.Name = "chapter2Check";
-            chapter2Check.Size = new Size(317, 34);
+            chapter2Check.Size = new Size(404, 41);
             chapter2Check.TabIndex = 2;
             chapter2Check.Text = "Глава 2 - Случайные события";
             chapter2Check.UseVisualStyleBackColor = true;
@@ -73,7 +73,7 @@
             chapter3Check.AutoSize = true;
             chapter3Check.Location = new Point(24, 204);
             chapter3Check.Name = "chapter3Check";
-            chapter3Check.Size = new Size(599, 34);
+            chapter3Check.Size = new Size(769, 41);
             chapter3Check.TabIndex = 3;
             chapter3Check.Text = "Глава 3 - Формула полной вероятности и формулы Байеса";
             chapter3Check.UseVisualStyleBackColor = true;
@@ -83,7 +83,7 @@
             chapter4Check.AutoSize = true;
             chapter4Check.Location = new Point(24, 261);
             chapter4Check.Name = "chapter4Check";
-            chapter4Check.Size = new Size(280, 34);
+            chapter4Check.Size = new Size(356, 41);
             chapter4Check.TabIndex = 4;
             chapter4Check.Text = "Глава 4 - Схема Бернулли";
             chapter4Check.UseVisualStyleBackColor = true;
@@ -93,7 +93,7 @@
             chapter5Check.AutoSize = true;
             chapter5Check.Location = new Point(24, 318);
             chapter5Check.Name = "chapter5Check";
-            chapter5Check.Size = new Size(452, 34);
+            chapter5Check.Size = new Size(576, 41);
             chapter5Check.TabIndex = 5;
             chapter5Check.Text = "Глава 5 - Дискретные случайные величины";
             chapter5Check.UseVisualStyleBackColor = true;
@@ -103,13 +103,14 @@
             chapter7Check.AutoSize = true;
             chapter7Check.Location = new Point(24, 373);
             chapter7Check.Name = "chapter7Check";
-            chapter7Check.Size = new Size(800, 34);
+            chapter7Check.Size = new Size(1026, 41);
             chapter7Check.TabIndex = 6;
             chapter7Check.Text = "Глава 7 - Важнейшие законы распределения непрерывных случайных величин";
             chapter7Check.UseVisualStyleBackColor = true;
             // 
             // configBtn
             // 
+            configBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             configBtn.Location = new Point(67, 439);
             configBtn.Name = "configBtn";
             configBtn.Size = new Size(274, 61);
@@ -120,6 +121,7 @@
             // 
             // generateBtn
             // 
+            generateBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             generateBtn.Location = new Point(456, 439);
             generateBtn.Name = "generateBtn";
             generateBtn.Size = new Size(274, 61);
@@ -130,7 +132,7 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleDimensions = new SizeF(14F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(909, 637);
             Controls.Add(generateBtn);
