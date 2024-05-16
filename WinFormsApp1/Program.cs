@@ -264,6 +264,25 @@ namespace WinFormsApp1
     {
         private static Random rnd = new Random();
 
+        private static int gcd(int a, int b)
+        {
+            while (b != 0)
+            {
+                int temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return Math.Abs(a);
+        }
+
+        private static Tuple<int, int> reduceFraction(int chisl, int znam)
+        {
+            int gcd_val = gcd(chisl, znam);
+            chisl /= gcd_val;
+            znam /= gcd_val;
+            return new Tuple<int, int>(chisl, znam);
+        }
+
         private static double fi(double x)
         {
             return (1.0 / Math.Sqrt(2 * Math.PI)) * Math.Exp(-x * x / 2);
@@ -277,6 +296,29 @@ namespace WinFormsApp1
         private static int combinations(int n, int k)
         {
             return factorial(n) / (factorial(k) * factorial(n - k));
+        }
+
+        private static double f(double x)
+        {
+            return (1.0 / Math.Sqrt(2 * Math.PI)) * Math.Exp(-(x * x) / 2);
+        }
+
+        private static double func_laplace(double x)
+        {
+            double h = x / 100.0;
+            double integral = 0;
+
+            List<double> x_vals = new List<double>(101);
+            for (int i = 0; i < x_vals.Count; i++)
+            {
+                x_vals[i] = i * h;
+            }
+
+            for (int i = 1; i < x_vals.Count; i++)
+            {
+                integral += (h / 6) * (f(x_vals[i - 1]) + 4 * f((x_vals[i] + x_vals[i - 1]) / 2) + f(x_vals[i]));
+            }
+            return Math.Abs(integral);
         }
 
         public static Tuple<string, string> task2_1_generate()
@@ -432,6 +474,9 @@ namespace WinFormsApp1
             
             int chisl = k * (n - 1) + (n - k) * k;
             int znam = n * (n - 1);
+            Tuple<int, int> fraction = reduceFraction(chisl, znam);
+            chisl = fraction.Item1;
+            znam = fraction.Item2;
             string answer = chisl.ToString() + "/" + znam.ToString();
 
             return new Tuple<string, string>(task, answer);
@@ -493,7 +538,14 @@ namespace WinFormsApp1
             int k = rnd.Next(21, 40) * 10;
             double prob = (double)rnd.Next(3, 9) / 10.0;
 
-            int n = (int)(Math.Round((double)k / prob / 10)) * 10 + rnd.Next(-4, 4) * 10;
+            int n = (int)Math.Round((double)k / prob / 10) * 10 + rnd.Next(-4, 4) * 10;
+
+            if (Math.Abs((k - n * prob) / Math.Sqrt(n * prob * (1 - prob))) > 4)
+            {
+                k = rnd.Next(21, 40) * 10;
+                prob = (double)rnd.Next(3, 9) / 10.0;
+                n = (int)Math.Round((double)k / prob / 10) * 10 + rnd.Next(-4, 4) * 10;
+            }
 
             string task = "В каждом из " + n + " независимых испытаний событие" +
                 " А происходит с постоянной вероятностью " + prob + ". Найти " +
@@ -502,18 +554,37 @@ namespace WinFormsApp1
                 "чем 240 и более чем 180 раз.\r\n";
 
             // а)
-            
-            double x = (k - n * prob) / Math.Sqrt(n * prob * (1 - prob));
-            /*if (Math.Round((1 / Math.Sqrt(n * prob * (1 - prob))) * fi(x), 4) == 0)
-            {
-                generate();
-                return;
-            } это слишком гениальная идея чтобы юзать ее...*/
-            
-            string answer = "а) " + Math.Round((1 / Math.Sqrt(n*prob*(1- prob))) * fi(x), 4).ToString();
 
-            // пункт б) пока что откладывается...
-            return null;
+            double x = (k - n * prob) / Math.Sqrt(n * prob * (1 - prob));
+
+            string answer = "а) " + Math.Round((1 / Math.Sqrt(n * prob * (1 - prob))) * fi(x), 4).ToString();
+
+            // б)
+
+            int k1 = k - (rnd.Next(1, 6) * 10);
+            int k2 = k1 + (rnd.Next(3, 6) * 10);
+
+            double x1 = Math.Round((k1 - n * prob) / Math.Sqrt(n * prob * (1 - prob)), 2);
+            double x2 = Math.Round((k2 - n * prob) / Math.Sqrt(n * prob * (1 - prob)), 2);
+
+            double fl1 = func_laplace(x1);
+            double fl2 = func_laplace(x2);
+
+            while (fl1 >= 4 || fl2 >= 4 || fl1 == fl2)
+            {
+                k1 = k - (rnd.Next(1, 6) * 10);
+                k2 = k1 + (rnd.Next(3, 6) * 10);
+
+                x1 = (k1 - n * prob) / Math.Sqrt(n * prob * (1 - prob));
+                x2 = (k2 - n * prob) / Math.Sqrt(n * prob * (1 - prob));
+
+                fl1 = func_laplace(x1);
+                fl2 = func_laplace(x2);
+            }
+
+            double res = Math.Abs(fl2 - fl1);
+            answer += "; б) " + Math.Round(res, 4).ToString();
+            return new Tuple<string, string>(task, answer);
         }
 
         public static Tuple<string, string> task4_3_generate()
