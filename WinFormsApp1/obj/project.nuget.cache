@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "3pFLD1noXhcF4FazFC19cBGHJ0QF+BwywhHzcKbxKvVuIRY8TQ297OXsBHYDbC81YLniIj6cJMSSl/yJ0QvRKQ==",
+  "dgSpecHash": "XV8G+m+2xk0mTxJUvOQb55toEvM2ZSAM4rPx3iB7ga6GHaxXNkEr5NJORa3XJzTTPEh98W21o9dA9itGPKGx7A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\varte\\Desktop\\c+++\\c#\\variantMakerTP\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "C:\\Users\\User\\source\\repos\\variantMaker\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\varte\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
-    "C:\\Users\\varte\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
-    "C:\\Users\\varte\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
+    "C:\\Users\\User\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }

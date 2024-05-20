@@ -40,7 +40,7 @@ namespace WinFormsApp1
         public static int amount7_3 = 0;
 
 
-        //TODO : Добавить остальные главы
+        public static int variantAmount = 1;
 
         public static bool isConfigured = false;
 
@@ -162,7 +162,7 @@ namespace WinFormsApp1
             wordDoc.MainDocumentPart.Document.Body.AppendChild(new Paragraph(new Run(element)));
         }
 
-        public void createTable(string[] headers, double[,] matrix)
+        public void createTable(string[] headers, string[,] matrix)
         {
             // Create an empty table.
             Table table = new Table();
@@ -753,10 +753,10 @@ namespace WinFormsApp1
 
             List<double> py = new List<double> { py1, py2 };
 
-            string[,] task_matrix_Y = new string[2, 3];
-            for (int i = 0; i < 3; i++)
+            string[,] task_matrix_Y = new string[2, 2];
+            for (int i = 0; i < 2; i++)
                 task_matrix_Y[0, i] = y_values[i].ToString();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
                 task_matrix_Y[1, i] = py[i].ToString();
 
             string task = "Независимые случайные величины X и Y " +

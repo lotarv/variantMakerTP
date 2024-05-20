@@ -37,6 +37,8 @@
             chapter7Check = new CheckBox();
             configBtn = new Button();
             generateBtn = new Button();
+            label2 = new Label();
+            amountInput = new TextBox();
             SuspendLayout();
             // 
             // label1
@@ -111,7 +113,7 @@
             // configBtn
             // 
             configBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            configBtn.Location = new Point(67, 439);
+            configBtn.Location = new Point(24, 439);
             configBtn.Name = "configBtn";
             configBtn.Size = new Size(274, 61);
             configBtn.TabIndex = 7;
@@ -122,7 +124,7 @@
             // generateBtn
             // 
             generateBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            generateBtn.Location = new Point(456, 439);
+            generateBtn.Location = new Point(724, 439);
             generateBtn.Name = "generateBtn";
             generateBtn.Size = new Size(274, 61);
             generateBtn.TabIndex = 8;
@@ -130,11 +132,29 @@
             generateBtn.UseVisualStyleBackColor = true;
             generateBtn.Click += generateBtn_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(332, 449);
+            label2.Name = "label2";
+            label2.Size = new Size(167, 37);
+            label2.TabIndex = 9;
+            label2.Text = "Количество:";
+            // 
+            // amountInput
+            // 
+            amountInput.Location = new Point(505, 449);
+            amountInput.Name = "amountInput";
+            amountInput.Size = new Size(125, 42);
+            amountInput.TabIndex = 10;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(14F, 36F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(909, 637);
+            ClientSize = new Size(1119, 637);
+            Controls.Add(amountInput);
+            Controls.Add(label2);
             Controls.Add(generateBtn);
             Controls.Add(configBtn);
             Controls.Add(chapter7Check);
@@ -164,5 +184,7 @@
         private CheckBox chapter7Check;
         private Button configBtn;
         private Button generateBtn;
+        private Label label2;
+        private TextBox amountInput;
     }
 }

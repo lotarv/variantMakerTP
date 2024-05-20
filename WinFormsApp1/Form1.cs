@@ -8,6 +8,7 @@ namespace WinFormsApp1
     {
         private string filePath;
         private int currentNumber = 1;
+        private int currentVariant = 1;
         WordDocument wordDoc;
         WordDocument wordDocAnswers;
         public Form1()
@@ -54,6 +55,7 @@ namespace WinFormsApp1
                 filePath = saveFileDialog.FileName;
                 try
                 {
+                    GenereationConfig.variantAmount = Convert.ToInt32(amountInput.Text);
                     generate();
                 }
                 catch(Exception ex)
@@ -71,37 +73,45 @@ namespace WinFormsApp1
             string filePathAnswers = filePath.Substring(0, filePath.LastIndexOf('.'));
             filePathAnswers += "Ответы.docx";
             wordDocAnswers = new WordDocument(filePathAnswers);
-            wordDoc.newParagraph("generating next variant:");
 
-            if (GenereationConfig.is1)
+            for (int i = 0; i < GenereationConfig.variantAmount; i++)
             {
-                generateChapter1();
+                currentNumber = 1;
+                wordDoc.newParagraph($"Вариант {currentVariant}");
+                wordDocAnswers.newParagraph($"Вариант {currentVariant++}");
+
+                if (GenereationConfig.is1)
+                {
+                    generateChapter1();
+                }
+
+                if (GenereationConfig.is2)
+                {
+                    generateChapter2();
+                }
+
+                if (GenereationConfig.is3)
+                {
+                    generateChapter3();
+                }
+
+                if (GenereationConfig.is4)
+                {
+                    generateChapter4();
+                }
+
+                if (GenereationConfig.is5)
+                {
+                    generateChapter5();
+                }
+
+                if (GenereationConfig.is7)
+                {
+                    generateChapter7();
+                }
             }
 
-            if (GenereationConfig.is2)
-            {
-                generateChapter2();
-            }
-
-            if (GenereationConfig.is3)
-            {
-                generateChapter3();
-            }
-
-            if (GenereationConfig.is4)
-            {
-                generateChapter4();
-            }
-
-            if (GenereationConfig.is5)
-            {
-                generateChapter5();
-            }
-
-            if (GenereationConfig.is7)
-            {
-                generateChapter7();
-            }
+            
 
             //Закрытие документа
             wordDoc.closeDocument();
@@ -112,6 +122,7 @@ namespace WinFormsApp1
 
         private void generateChapter1()
         {
+            wordDoc.newParagraph("ГЛАВА 1");
             //Задание 1 - пока не сделано
 
             //Задание 2 - пока не сделано
@@ -120,7 +131,7 @@ namespace WinFormsApp1
 
         private void generateChapter2()
         {
-            //1 задание - пока не сделано
+            wordDoc.newParagraph("ГЛАВА 2");
 
             for (int i = 0; i < GenereationConfig.amount2_1; i++)
             {
@@ -160,6 +171,7 @@ namespace WinFormsApp1
 
         private void generateChapter3()
         {
+            wordDoc.newParagraph("ГЛАВА 3");
             //1 задание
             for (int i = 0; i < GenereationConfig.amount3_1; i++)
             {
@@ -185,6 +197,7 @@ namespace WinFormsApp1
 
         private void generateChapter4()
         {
+            wordDoc.newParagraph("ГЛАВА 4");
             //Задание 1
             for (int i = 0; i < GenereationConfig.amount4_1; i++)
             {
@@ -196,6 +209,15 @@ namespace WinFormsApp1
             }
 
             //Задание 2 - пока не сделано
+
+            //for (int i = 0; i < GenereationConfig.amount4_2; i++)
+            //{
+            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
+            //    Tuple<string, string> task4_2 = Tasks.task4_2_generate();
+            //    wordDoc.appendText(task4_2.Item1);
+            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+            //    wordDocAnswers.newParagraph(task4_2.Item2);
+            //}
 
             //Задание 3
 
@@ -211,46 +233,62 @@ namespace WinFormsApp1
 
         private void generateChapter5()
         {
+            wordDoc.newParagraph("ГЛАВА 5");
             //Задание 1
 
-            //for (int i = 0; i < GenereationConfig.amount5_1; i++)
-            //{
-            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
-            //    Tuple<string, string> task5_1 = Tasks.task5_1_generate();
-            //    wordDoc.appendText(task5_1.Item1);
-            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
-            //    wordDocAnswers.newParagraph(task5_1.Item2);
-            //}
+            for (int i = 0; i < GenereationConfig.amount5_1; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string, string[], string[,]> task5_1 = Tasks.task5_1_generate();
+                wordDoc.appendText(task5_1.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.createTable(task5_1.Item3, task5_1.Item4);
+                wordDocAnswers.newParagraph(task5_1.Item2);
+                
+            }
 
             //Задание 2
-            //for (int i = 0; i < GenereationConfig.amount5_2; i++)
-            //{
-            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
-            //    Tuple<string, string> task5_2 = Tasks.task5_2_generate();
-            //    wordDoc.appendText(task5_2.Item1);
-            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
-            //    wordDocAnswers.newParagraph(task5_2.Item2);
+            for (int i = 0; i < GenereationConfig.amount5_2; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string, string[], string[,]> task5_2 = Tasks.task5_2_generate();
+                wordDoc.appendText(task5_2.Item1);
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.createTable(task5_2.Item3, task5_2.Item4);
+                wordDocAnswers.newParagraph(task5_2.Item2);
 
-            //    double[,] matrix = new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-            //    wordDoc.createTable(new string[] { "x", "y", "z" }, matrix);
-            //}
+            }
 
             //Задание 3 - пока не сделано
 
 
             //Задание 4
-            //for (int i = 0; i < GenereationConfig.amount5_4; i++)
-            //{
-            //    wordDoc.newParagraph(currentNumber.ToString() + ". ");
-            //    Tuple<string, string> task5_4 = Tasks.task5_4_generate();
-            //    wordDoc.appendText(task5_4.Item1);
-            //    wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
-            //    wordDocAnswers.newParagraph(task5_4.Item2);
-            //}
+            for (int i = 0; i < GenereationConfig.amount5_4; i++)
+            {
+                wordDoc.newParagraph(currentNumber.ToString() + ". ");
+                Tuple<string, string, string[,], string[,], string[,], string[,], string> task5_4 = Tasks.task5_4_generate();
+                //(task, answer, task_matrix_X, task_matrix_Y, answer_matrix_Z1, answer_matrix_Z2, answer2);
+
+                wordDoc.appendText(task5_4.Item1);
+                wordDoc.createTable(new string[] { "X", "p" }, task5_4.Item3);
+                wordDoc.newParagraph("");
+                wordDoc.createTable(new string[] { "Y", "p" }, task5_4.Item4);
+
+                wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
+                wordDocAnswers.newParagraph(task5_4.Item2);
+
+                wordDocAnswers.createTable(new string[] { "Z1", "p" }, task5_4.Item5);
+                wordDoc.newParagraph("");
+                wordDocAnswers.createTable(new string[] { "Z2", "p" }, task5_4.Item6);
+
+                wordDocAnswers.newParagraph(task5_4.Item7);
+
+            }
         }
 
         private void generateChapter7()
         {
+            wordDoc.newParagraph("ГЛАВА 7");
             //Задание 1 - пока не сделано
 
             //Задание 2 - пока не сделано
