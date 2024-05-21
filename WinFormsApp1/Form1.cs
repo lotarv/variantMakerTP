@@ -35,12 +35,37 @@ namespace WinFormsApp1
 
         private void generateBtn_Click(object sender, EventArgs e)
         {
-            if (GenereationConfig.isConfigured == false)
+            bool is1 = chapter1Check.Checked, is2 = chapter2Check.Checked, is3 = chapter3Check.Checked, is4 = chapter4Check.Checked, is5 = chapter5Check.Checked, is7 = chapter7Check.Checked;
+            if (!is1)
             {
-                MessageBox.Show("Сначала завершите настройку глав!");
-                return;
+                
+                GenereationConfig.is1 = false;
             }
-
+            if (!is2)
+            {
+                
+                GenereationConfig.is2 = false;
+            }
+            if (!is3)
+            {
+                
+                GenereationConfig.is3 = false;
+            }
+            if (!is4)
+            {
+                
+                GenereationConfig.is4 = false;
+            }
+            if (!is5)
+            {
+                
+                GenereationConfig.is5 = false;
+            }
+            if (!is7)
+            {
+                
+                GenereationConfig.is7 = false;
+            }
 
             // Открытие диалогового окна выбора файла
             SaveFileDialog saveFileDialog = new SaveFileDialog
@@ -76,7 +101,14 @@ namespace WinFormsApp1
 
             for (int i = 0; i < GenereationConfig.variantAmount; i++)
             {
-                currentNumber = 1;
+                currentNumber = 1;             
+                if (currentVariant > 1) //Промежуток между вариантами
+                {
+                    for (int k = 0; k < 27; k++) //После всех задач подобрать нужное число
+                    {
+                        wordDoc.newParagraph("");
+                    }
+                }
                 wordDoc.newParagraph($"Вариант {currentVariant}");
                 wordDocAnswers.newParagraph($"Вариант {currentVariant++}");
 

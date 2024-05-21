@@ -20,24 +20,24 @@ namespace WinFormsApp1
         public static bool is5 = true;
         public static bool is7 = true;
 
-        public static int amount1_1 = 0;
-        public static int amount1_2 = 0;
-        public static int amount2_1 = 0;
-        public static int amount2_2 = 0;
-        public static int amount2_3 = 0;
-        public static int amount3_1 = 0;
-        public static int amount3_2 = 0;
-        public static int amount3_3 = 0;
-        public static int amount4_1 = 0;
-        public static int amount4_2 = 0;
-        public static int amount4_3 = 0;
-        public static int amount5_1 = 0;
-        public static int amount5_2 = 0;
-        public static int amount5_3 = 0;
-        public static int amount5_4 = 0;
-        public static int amount7_1 = 0;
-        public static int amount7_2 = 0;
-        public static int amount7_3 = 0;
+        public static int amount1_1 = 1;
+        public static int amount1_2 = 1;
+        public static int amount2_1 = 1;
+        public static int amount2_2 = 1;
+        public static int amount2_3 = 1;
+        public static int amount3_1 = 1;
+        public static int amount3_2 = 1;
+        public static int amount3_3 = 1;
+        public static int amount4_1 = 1;
+        public static int amount4_2 = 1;
+        public static int amount4_3 = 1;
+        public static int amount5_1 = 1;
+        public static int amount5_2 = 1;
+        public static int amount5_3 = 1;
+        public static int amount5_4 = 1;
+        public static int amount7_1 = 1;
+        public static int amount7_2 = 1;
+        public static int amount7_3 = 1;
 
 
         public static int variantAmount = 1;

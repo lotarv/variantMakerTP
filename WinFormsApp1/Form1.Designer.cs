@@ -53,6 +53,8 @@
             // chapter1Check
             // 
             chapter1Check.AutoSize = true;
+            chapter1Check.Checked = true;
+            chapter1Check.CheckState = CheckState.Checked;
             chapter1Check.Location = new Point(24, 89);
             chapter1Check.Name = "chapter1Check";
             chapter1Check.Size = new Size(354, 41);
@@ -63,6 +65,8 @@
             // chapter2Check
             // 
             chapter2Check.AutoSize = true;
+            chapter2Check.Checked = true;
+            chapter2Check.CheckState = CheckState.Checked;
             chapter2Check.Location = new Point(24, 147);
             chapter2Check.Name = "chapter2Check";
             chapter2Check.Size = new Size(404, 41);
@@ -73,6 +77,8 @@
             // chapter3Check
             // 
             chapter3Check.AutoSize = true;
+            chapter3Check.Checked = true;
+            chapter3Check.CheckState = CheckState.Checked;
             chapter3Check.Location = new Point(24, 204);
             chapter3Check.Name = "chapter3Check";
             chapter3Check.Size = new Size(769, 41);
@@ -83,6 +89,8 @@
             // chapter4Check
             // 
             chapter4Check.AutoSize = true;
+            chapter4Check.Checked = true;
+            chapter4Check.CheckState = CheckState.Checked;
             chapter4Check.Location = new Point(24, 261);
             chapter4Check.Name = "chapter4Check";
             chapter4Check.Size = new Size(356, 41);
@@ -93,6 +101,8 @@
             // chapter5Check
             // 
             chapter5Check.AutoSize = true;
+            chapter5Check.Checked = true;
+            chapter5Check.CheckState = CheckState.Checked;
             chapter5Check.Location = new Point(24, 318);
             chapter5Check.Name = "chapter5Check";
             chapter5Check.Size = new Size(576, 41);
@@ -103,6 +113,8 @@
             // chapter7Check
             // 
             chapter7Check.AutoSize = true;
+            chapter7Check.Checked = true;
+            chapter7Check.CheckState = CheckState.Checked;
             chapter7Check.Location = new Point(24, 373);
             chapter7Check.Name = "chapter7Check";
             chapter7Check.Size = new Size(1026, 41);
@@ -112,6 +124,7 @@
             // 
             // configBtn
             // 
+            configBtn.Cursor = Cursors.Hand;
             configBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             configBtn.Location = new Point(24, 439);
             configBtn.Name = "configBtn";
@@ -123,6 +136,7 @@
             // 
             // generateBtn
             // 
+            generateBtn.Cursor = Cursors.Hand;
             generateBtn.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             generateBtn.Location = new Point(724, 439);
             generateBtn.Name = "generateBtn";
@@ -147,6 +161,7 @@
             amountInput.Name = "amountInput";
             amountInput.Size = new Size(125, 42);
             amountInput.TabIndex = 10;
+            amountInput.Text = "1";
             // 
             // Form1
             // 
