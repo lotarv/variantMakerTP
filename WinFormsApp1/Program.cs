@@ -7,6 +7,7 @@ using A = DocumentFormat.OpenXml.Drawing;
 using DW = DocumentFormat.OpenXml.Drawing.Wordprocessing;
 using PIC = DocumentFormat.OpenXml.Drawing.Pictures;
 using System.Collections;
+using Accord.Statistics.Distributions.Univariate;
 
 namespace WinFormsApp1
 {
@@ -307,11 +308,12 @@ namespace WinFormsApp1
         {
             double h = x / 100.0;
             double integral = 0;
+            int n = 100;
 
-            List<double> x_vals = new List<double>(101);
-            for (int i = 0; i < x_vals.Count; i++)
+            List<double> x_vals = new List<double>(n + 1);
+            for (int i = 0; i < n; i++)
             {
-                x_vals[i] = i * h;
+                x_vals.Add(i * h);
             }
 
             for (int i = 1; i < x_vals.Count; i++)
@@ -319,6 +321,61 @@ namespace WinFormsApp1
                 integral += (h / 6) * (f(x_vals[i - 1]) + 4 * f((x_vals[i] + x_vals[i - 1]) / 2) + f(x_vals[i]));
             }
             return Math.Abs(integral);
+        }
+
+        public static Tuple<string, string> task1_1_generate()
+        {
+            int n = rnd.Next(10, 21);
+            int k = rnd.Next(4, n - 3);
+
+            string task = "В конверте " + n + " фотографий, на двух из" +
+                " которых изображены отец и сын, объявленные в розыск." +
+                " Следователь извлекает наугад последовательно без возвращения " +
+                k + " фотографий. Найти вероятность того, что:\r\n " +
+                "а) на первой из извлеченных фотографии будет отец, а на второй — сын;\r\n " +
+                "б) фотография отца попадется раньше, чем фотография сына.\r\n";
+
+            int chisl = 1;
+            int znam = n * (n - 1);
+
+            string answer = "а) " + chisl + "/" + znam + "; б) " + chisl + "/" + znam;
+            return new Tuple<string, string> (task, answer);
+        }
+
+        public static Tuple<string, string> task1_2_generate()
+        {
+            int n = rnd.Next(9, 12);
+
+            int chervonets = rnd.Next(2, 5);
+            int tridesyat = rnd.Next(2, 5);
+            int pyatihat = n - chervonets - tridesyat;
+
+            int k = rnd.Next(3, 5);
+
+            string task = "В кассе осталось " + chervonets + " билетов" +
+                " по 10 рублей, " + tridesyat + " — по 30 рублей" +
+                " и " + pyatihat + " — по 50. Покупатели наугад" +
+                " берут " + k + " билета. Найти вероятность того," +
+                " что из этих билетов имеют одинаковую стоимость:\r\n" +
+                " а) два билета;\r\n б) хотя бы два билета\r\n";
+
+            n = chervonets + tridesyat + pyatihat;
+
+            // a)
+            int total_outcomes = combinations(n, k);
+            int favorable_outcomes = n * k * 2;
+            Tuple<int, int> result = reduceFraction(favorable_outcomes, total_outcomes);
+            string answer = "а) " + result.Item1 + "/" + result.Item2;
+
+            // б)
+            total_outcomes = combinations(n, k);
+            favorable_outcomes = total_outcomes - n * k * 2;
+
+            result = reduceFraction(favorable_outcomes, total_outcomes);
+
+            answer += "; б) " + result.Item1 + "/" + result.Item2;
+
+            return new Tuple<string, string>(task, answer);
         }
 
         public static Tuple<string, string> task2_1_generate()
@@ -480,6 +537,23 @@ namespace WinFormsApp1
             string answer = chisl.ToString() + "/" + znam.ToString();
 
             return new Tuple<string, string>(task, answer);
+        }
+
+        public static Tuple<string, string> task3_2_generate()
+        {
+            Random rnd = new();
+            double prob1 = (double)(rnd.Next(1, 10)) / 10.0;
+            double prob2 = (double)(rnd.Next(1, 10)) / 10.0;
+            double prob3 = (double)(rnd.Next(1, 10)) / 10.0;
+
+            string task = "Вероятность быть избранным в Простоквашинскую Думу" +
+                " у дяди Федора равна " + prob1 + ", у кота Матроскина — " +
+                prob2 + ", у почтальона Печкина — " + prob3 + ". Пес Шарик неграмотный," +
+                " поэтому он голосует наугад. Какова вероятность, что изберут" +
+                " того кандидата, за которого проголосует Шарик?";
+            double result = (1.0 / 3) * prob1 + (1.0 / 3) * prob2 + (1.0 / 3) * prob3;
+            string answer = Math.Round(result, 4).ToString();
+            return new Tuple<string, string> (task, answer);
         }
 
         public static Tuple<string, string> task3_3_generate()
@@ -731,6 +805,41 @@ namespace WinFormsApp1
             return new Tuple<string, string, string[], string[,]>(task, answer, answer_table_headers, answer_table_matrix);
         }
 
+        public static Tuple<string, string, string[], string[,]> task5_3_generate()
+        {
+            double prob = (double)rnd.Next(1, 11) / 1000.0;
+            int n = rnd.Next(2, 10) * 150;
+
+            string task = "Станок-автомат штампует детали. Вероятность того," +
+                " что деталь окажется бракованной, равна " + prob + ". Составить" +
+                " ряд распределения бракованных деталей из " + n + " изготовленных." +
+                " Найти M(X) этой случайной величины.";
+
+            double q = 1 - prob;
+
+            string[] headers = { "X", "P" };
+            string[,] values = { { "0", "1", "...", "k", "...", n.ToString() },
+                                 { "", "", "...", "", "...", "" } };
+
+            values[1, 0] = q.ToString() + "^" + n.ToString();
+            values[1, 1] = q.ToString() + "^" + (n - 1).ToString()
+                + "*" + prob.ToString() + "^1";
+            values[1, 3] = "C(" + n.ToString() + ", k)*" + prob.ToString()
+                + "^k*" + q.ToString() + "^(" + n.ToString() + "-k)";
+            values[1, 5] = prob.ToString() + "^" + n.ToString();
+
+            double MX = 0.0;
+            for (int i = 0; i <= n; i++)
+            {
+                double x = (i - n * prob) / Math.Sqrt(n * prob * q);
+                double p = (1.0 / Math.Sqrt(n * prob * q)) * fi(x);
+                MX += i * p;
+            }
+
+            string answer = "M(X) = " + Math.Round(MX, 4);
+            return new Tuple<string, string, string[], string[,]> (task, answer, headers, values);
+        }
+
         public static Tuple<string, string, string[,], string[,], string[,], string[,], string> task5_4_generate()
         {
             List<int> x_values = new List<int> { 2, 4, 5 };
@@ -841,7 +950,7 @@ namespace WinFormsApp1
             for (int i = 0; i < 3; i++)
                 answer_matrix_Z1[0, i] = z1_values[i].ToString();
             for (int i = 0; i < 3; i++)
-                answer_matrix_Z1[1, i] = pz1[i].ToString();
+                answer_matrix_Z1[1, i] = Math.Round(pz1[i], 4).ToString();
 
             List<double> pz2 = new List<double>();
             foreach (int x in z2_values)
@@ -867,7 +976,7 @@ namespace WinFormsApp1
             for (int i = 0; i < 3; i++)
                 answer_matrix_Z2[0, i] = z2_values[i].ToString();
             for (int i = 0; i < 3; i++)
-                answer_matrix_Z2[1, i] = pz2[i].ToString();
+                answer_matrix_Z2[1, i] = Math.Round(pz2[i], 4).ToString();
 
             double MZ1 = 0.0;
             for (int i = 0; i < pz1.Count; i++)
@@ -900,6 +1009,74 @@ namespace WinFormsApp1
 
             return new Tuple<string, string, string[,], string[,], string[,], string[,], string>
                 (task, answer, task_matrix_X, task_matrix_Y, answer_matrix_Z1, answer_matrix_Z2, answer2);
+        }
+
+        public static Tuple<string, string> task7_1_generate()
+        {
+            double m = rnd.Next(8, 14);
+            double sigma = 0.1;
+            double prob = (double)rnd.Next(8000, 9999) / 10000.0;
+            string task = "\tСтанок-автомат изготавливает валики, контролируя" +
+                " их диаметр X. Считая, что X распределено нормально" +
+                " (m = 10 мм, σ = 0,1 мм), найти интервал, в котором с" +
+                " вероятностью " + prob + " будут заключены диаметры изготавливаемых валиков";
+            NormalDistribution norm = new NormalDistribution(0, 1);
+
+            double z1 = norm.InverseDistributionFunction((1 - prob) / 2);
+            double z2 = norm.InverseDistributionFunction((1 + prob) / 2);
+
+            double x1 = m + z1 * sigma;
+            double x2 = m + z2 * sigma;
+
+            string answer = Math.Round(x1, 4) + " < X < " + Math.Round(x2, 4);
+            return new Tuple<string, string>(task, answer);
+        }
+
+        public static Tuple<string, string> task7_2_generate()
+        {
+            double alpha = (double)rnd.Next(30, 98) / 100000.0;
+
+            string task = "Время T работы лазерного принтера до выхода" +
+                " из строя имеет экспоненциальное распределение" +
+                " с плотностью\r\nf(t) = " + alpha + "e^(-" + alpha + "t) (t>0);" +
+                " \r\nНайти вероятность того, что принтер проработает до выхода из" +
+                " строя не менее:\r\n а) 2 500 ч;\r\n б) 5 000 ч;\r\n в) 10 000ч;\r\n";
+
+            double result1 = Math.Round(Math.Exp(-alpha * 2500), 4);
+            double result2 = Math.Round(Math.Exp(-alpha * 5000), 4);
+            double result3 = Math.Round(Math.Exp(-alpha * 10000), 4);
+            string answer = "а) " + result1 + "; б) " + result2 + "; в) " + result3;
+
+            return new Tuple<string, string>(task, answer);
+        }
+
+        public static Tuple<string, string> task7_3_generate()
+        {
+            int m = rnd.Next(4, 8);
+            int sigma = rnd.Next(1, 3);
+            int a = rnd.Next(3, 6);
+            int b = rnd.Next(6, 10);
+            double x1 = (double)(a - m) / sigma;
+            double x2 = (double)(b - m) / sigma;
+
+            while (Math.Abs(x1) == Math.Abs(x2))
+            {
+                a = rnd.Next(3, 6);
+                b = rnd.Next(6, 10);
+                x1 = (double)(a - m) / sigma;
+                x2 = (double)(b - m) / sigma;
+            }
+
+            string task = "Случайная величина — период накопления состава" +
+                " на сортировочном пути — распределена по нормальному закону" +
+                " с параметрами m = " + m + " ч и  σ = " + sigma + " ч. Какова" +
+                " вероятность того, что случайная величина будет заключена" +
+                " между " + a + " и " + b + " часами?";
+
+            double prob = Math.Round(Math.Abs(func_laplace((double)(b - m) / sigma) - func_laplace((double)(a - m) / sigma)), 4);
+
+            string answer = prob.ToString();
+            return new Tuple<string, string> (task, answer);
         }
     }
 

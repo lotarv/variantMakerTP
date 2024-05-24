@@ -105,12 +105,10 @@ namespace WinFormsApp1
 
                 if (GenereationConfig.is7)
                 {
-                    GenereationConfig.amount7_1 = Convert.ToInt32(inputAmount4_1.Text);
-                    GenereationConfig.amount7_2 = Convert.ToInt32(inputAmount4_2.Text);
-                    GenereationConfig.amount7_3 = Convert.ToInt32(inputAmount4_3.Text);
+                    GenereationConfig.amount7_1 = Convert.ToInt32(inputAmount7_1.Text);
+                    GenereationConfig.amount7_2 = Convert.ToInt32(inputAmount7_2.Text);
+                    GenereationConfig.amount7_3 = Convert.ToInt32(inputAmount7_3.Text);
                 }
-
-
 
                 GenereationConfig.isConfigured = true;
                 this.Close();

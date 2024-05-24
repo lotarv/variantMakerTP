@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!--
-    Microsoft ResX Schema 
-
-    Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
-    associated with the data types.
-
-    Example:
-
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-
-    There are any number of "resheader" rows that contain simple
-    name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
-    mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
-    extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
-    read any of the formats listed below.
-
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -117,42 +57,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label31.Text" xml:space="preserve">
-    <value>4. Независимые случайные величины X и Y заданы таблицами распределений.
-Найти:
-1) M(X), M(Y), D(X), D(Y);
-2) таблицы распределения случайных величин  = 2X + Y,  = X × Y;
-3) M(), M(), D(), D() непосредственно по таблицам распределений и на основании свойств математического ожидания и дисперсии.
-
-</value>
-  </data>
-  <data name="label33.Text" xml:space="preserve">
-    <value>3.Станок-автомат штампует детали. Вероятность того, что деталь окажется бракованной, равна 0,01. Составить ряд распределения бракованных деталей из 200 изготовленных. Найти M(X) этой случайной величины.
-</value>
-  </data>
-  <data name="label37.Text" xml:space="preserve">
-    <value>1.Производятся последовательные испытания надежности пяти приборов. Каждый следующий прибор испытывается только в том случае, если предыдущий оказался надежным. Составить ряд распределения числа испытаний приборов, если вероятность выдержать испытание для каждого прибора равна 0,9. Найти М(Х), D(X), s(X), F(X) этой случайной величины. Построить график F(X).
-</value>
-  </data>
-  <data name="label29.Text" xml:space="preserve">
-    <value>3. Случайная величина — период накопления состава на сортировочном пути — распределена по нормальному закону с параметрами m = 6 ч и σ = 1 ч. Какова вероятность того, что случайная величина будет заключена между четырьмя и семью часами?
-</value>
-  </data>
-  <data name="label40.Text" xml:space="preserve">
-    <value>2 . Время T работы лазерного принтера до выхода из строя имеет экспоненциальное распределение с плотностью
-
-f(t) = 0,00042e             (t &gt; 0)
-
-Найти вероятность того, что принтер проработает до выхода из строя не менее:
- а) 2 500 ч;
- б) 5 000 ч;
- в) 10 000ч;
-</value>
-  </data>
-  <data name="label41.Text" xml:space="preserve">
-    <value>1.Станок-автомат изготавливает валики, контролируя их диаметр X. Считая, что X распределено нормально (m = 10 мм,  σ= 0,1 мм), найти интервал, в котором с вероятностью 0,9973 будут заключены диаметры изготавливаемых валиков
-</value>
-  </data>
   <data name="label8.Text" xml:space="preserve">
     <value>2. В кассе осталось 5 билетов по 10 рублей, 3 — по 30 рублей и 2 — по 50. Покупатели наугад берут 3 билета. Найти вероятность того, что из этих билетов имеют одинаковую стоимость:
  а) два билета;
@@ -191,9 +95,44 @@ f(t) = 0,00042e             (t &gt; 0)
 </value>
   </data>
   <data name="label19.Text" xml:space="preserve">
-    <value>2. Три торговца сыром продают за день 40, 65 и 80%
-своей продукции, допуская при подсчете стоимости товара ошибку с вероятностью 0,3, 0,4 и 0,2 соответственно.
-Какова вероятность того, что покупатель сыра, выбравший продавца наугад, будет обманут?
+    <value>2. Вероятность быть избранным в Простоквашинскую Думу у дяди Федора равна 0,5, у кота Матроскина — 0,8, у почтальона Печкина — 0,7. Пес Шарик неграмотный, поэтому он голосует наугад. Какова вероятность, что изберут того кандидата, за которого проголосует Шарик?
+
+</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>4. Независимые случайные величины X и Y заданы таблицами распределений.
+Найти:
+1) M(X), M(Y), D(X), D(Y);
+2) таблицы распределения случайных величин  = 2X + Y,  = X × Y;
+3) M(), M(), D(), D() непосредственно по таблицам распределений и на основании свойств математического ожидания и дисперсии.
+
+</value>
+  </data>
+  <data name="label33.Text" xml:space="preserve">
+    <value>3.Станок-автомат штампует детали. Вероятность того, что деталь окажется бракованной, равна 0,01. Составить ряд распределения бракованных деталей из 200 изготовленных. Найти M(X) этой случайной величины.
+</value>
+  </data>
+  <data name="label37.Text" xml:space="preserve">
+    <value>1.Производятся последовательные испытания надежности пяти приборов. Каждый следующий прибор испытывается только в том случае, если предыдущий оказался надежным. Составить ряд распределения числа испытаний приборов, если вероятность выдержать испытание для каждого прибора равна 0,9. Найти М(Х), D(X), s(X), F(X) этой случайной величины. Построить график F(X).
+</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>3. Случайная величина — период накопления состава на сортировочном пути — распределена по нормальному закону с параметрами m = 6 ч и σ = 1 ч. Какова вероятность того, что случайная величина будет заключена между четырьмя и семью часами?
+</value>
+  </data>
+  <data name="label40.Text" xml:space="preserve">
+    <value>2 . Время T работы лазерного принтера до выхода из строя имеет экспоненциальное распределение с плотностью
+
+f(t) = 0,00042e             (t &gt; 0)
+
+Найти вероятность того, что принтер проработает до выхода из строя не менее:
+ а) 2 500 ч;
+ б) 5 000 ч;
+ в) 10 000ч;
+</value>
+  </data>
+  <data name="label41.Text" xml:space="preserve">
+    <value>1.Станок-автомат изготавливает валики, контролируя их диаметр X. Считая, что X распределено нормально (m = 10 мм,  σ= 0,1 мм), найти интервал, в котором с вероятностью 0,9973 будут заключены диаметры изготавливаемых валиков
 </value>
   </data>
 </root>
