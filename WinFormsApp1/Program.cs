@@ -61,6 +61,7 @@ namespace WinFormsApp1
             mainPart = wordDoc.AddMainDocumentPart();
             mainPart.Document = new Document();
             body = mainPart.Document.AppendChild(new Body());
+
         }
         public void appendText(string text)
         {
@@ -71,7 +72,13 @@ namespace WinFormsApp1
         public void newParagraph(string text)
         {
             currentPara = body.AppendChild(new Paragraph());
+            currentPara.ParagraphProperties = new ParagraphProperties();
+            currentPara.ParagraphProperties.ParagraphStyleId = new ParagraphStyleId() { Val = "TimesNewRomanStyle" };
+
             currentRun = currentPara.AppendChild(new Run());
+            currentRun.RunProperties = new RunProperties();
+            currentRun.RunProperties.RunStyle = new RunStyle() { Val = "TimesNewRomanStyle" };
+
             currentRun.AppendChild(new Text(text));
             mainPart.Document.Save();
         }

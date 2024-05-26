@@ -143,3 +143,8 @@ C:\Users\varte\Desktop\c+++\c#\variantMakerTP\WinFormsApp1\bin\Debug\net6.0-wind
 C:\Users\varte\Desktop\c+++\c#\variantMakerTP\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.Math.Core.dll
 C:\Users\varte\Desktop\c+++\c#\variantMakerTP\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.Math.dll
 C:\Users\varte\Desktop\c+++\c#\variantMakerTP\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.Statistics.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.dll.config
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.Math.Core.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.Math.dll
+C:\Users\Sergey\Visual Studio\C#\WinFormsApp1\WinFormsApp1\bin\Debug\net6.0-windows7.0\Accord.Statistics.dll

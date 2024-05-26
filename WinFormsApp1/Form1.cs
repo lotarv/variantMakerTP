@@ -23,7 +23,7 @@ namespace WinFormsApp1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            progressBar1.Minimum = 0;
         }
 
         private void configBtn_Click(object sender, EventArgs e)
@@ -81,7 +81,11 @@ namespace WinFormsApp1
                 try
                 {
                     GenereationConfig.variantAmount = Convert.ToInt32(amountInput.Text);
+                    progressBar1.Maximum = Convert.ToInt32(amountInput.Text) * 10;
+
                     generate();
+                    MessageBox.Show("Генерация завершена!");
+                    progressBar1.Value = 0;
                 }
                 catch(Exception ex)
                 {
@@ -99,18 +103,26 @@ namespace WinFormsApp1
             filePathAnswers += " Ответы.docx";
             wordDocAnswers = new WordDocument(filePathAnswers);
 
+            //Обнуление текущего варианта
+            currentVariant = 1;
+
             for (int i = 0; i < GenereationConfig.variantAmount; i++)
             {
                 currentNumber = 1;             
                 if (currentVariant > 1) //Промежуток между вариантами
                 {
-                    for (int k = 0; k < 27; k++) //После всех задач подобрать нужное число
+                    for (int k = 0; k < 6; k++) //После всех задач подобрать нужное число
                     {
                         wordDoc.newParagraph("");
+                        wordDocAnswers.newParagraph("");
                     }
+                    wordDocAnswers.newParagraph("");
                 }
                 wordDoc.newParagraph($"Вариант {currentVariant}");
                 wordDocAnswers.newParagraph($"Вариант {currentVariant++}");
+
+                //Обновляем ProgressBar
+                progressBar1.PerformStep();
 
                 if (GenereationConfig.is1)
                 {
@@ -141,6 +153,7 @@ namespace WinFormsApp1
                 {
                     generateChapter7();
                 }
+
             }
 
             
@@ -154,7 +167,7 @@ namespace WinFormsApp1
 
         private void generateChapter1()
         {
-            wordDoc.newParagraph("ГЛАВА 1");
+            //wordDoc.newParagraph("ГЛАВА 1");
             //Задание 1
             for (int i = 0; i < GenereationConfig.amount1_1; i++)
             {
@@ -180,7 +193,7 @@ namespace WinFormsApp1
 
         private void generateChapter2()
         {
-            wordDoc.newParagraph("ГЛАВА 2");
+            //wordDoc.newParagraph("ГЛАВА 2");
             
             //1 задание
             for (int i = 0; i < GenereationConfig.amount2_1; i++)
@@ -221,7 +234,7 @@ namespace WinFormsApp1
 
         private void generateChapter3()
         {
-            wordDoc.newParagraph("ГЛАВА 3");
+            //wordDoc.newParagraph("ГЛАВА 3");
             //1 задание
             for (int i = 0; i < GenereationConfig.amount3_1; i++)
             {
@@ -255,7 +268,7 @@ namespace WinFormsApp1
 
         private void generateChapter4()
         {
-            wordDoc.newParagraph("ГЛАВА 4");
+            //wordDoc.newParagraph("ГЛАВА 4");
             //Задание 1
             for (int i = 0; i < GenereationConfig.amount4_1; i++)
             {
@@ -291,7 +304,7 @@ namespace WinFormsApp1
 
         private void generateChapter5()
         {
-            wordDoc.newParagraph("ГЛАВА 5");
+            //wordDoc.newParagraph("ГЛАВА 5");
             //Задание 1
 
             for (int i = 0; i < GenereationConfig.amount5_1; i++)
@@ -353,7 +366,7 @@ namespace WinFormsApp1
 
         private void generateChapter7()
         {
-            wordDoc.newParagraph("ГЛАВА 7");
+            //wordDoc.newParagraph("ГЛАВА 7");
             //Задание 1
             for (int i = 0; i < GenereationConfig.amount7_1; i++)
             {
