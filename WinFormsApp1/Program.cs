@@ -327,7 +327,7 @@ namespace WinFormsApp1
             {
                 integral += (h / 6) * (f(x_vals[i - 1]) + 4 * f((x_vals[i] + x_vals[i - 1]) / 2) + f(x_vals[i]));
             }
-            return Math.Abs(integral);
+            return integral;
         }
 
         public static Tuple<string, string> task1_1_generate()
@@ -387,7 +387,6 @@ namespace WinFormsApp1
 
         public static Tuple<string, string> task2_1_generate()
         {
-            Random rnd = new Random();
             bool a_term;
             if (rnd.Next(0, 2) == 0)
                 a_term = false;
@@ -457,7 +456,7 @@ namespace WinFormsApp1
             answer += "}; б) {";
 
             BitArray answer2 = new BitArray(A);
-            answer1.Or(B);
+            answer2.Or(B);
 
             first = true;
             for (int i = 0; i < 6; i++)
@@ -621,18 +620,12 @@ namespace WinFormsApp1
 
             int n = (int)Math.Round((double)k / prob / 10) * 10 + rnd.Next(-4, 4) * 10;
 
-            if (Math.Abs((k - n * prob) / Math.Sqrt(n * prob * (1 - prob))) > 4)
+            while (Math.Abs((k - n * prob) / Math.Sqrt(n * prob * (1 - prob))) > 4)
             {
                 k = rnd.Next(21, 40) * 10;
                 prob = (double)rnd.Next(3, 9) / 10.0;
                 n = (int)Math.Round((double)k / prob / 10) * 10 + rnd.Next(-4, 4) * 10;
             }
-
-            string task = "В каждом из " + n + " независимых испытаний событие" +
-                " А происходит с постоянной вероятностью " + prob + ". Найти " +
-                "вероятность того, что событие А наступит:" +
-                "\r\nа) точно " + k + " раз;\r\nб) менее " +
-                "чем 240 и более чем 180 раз.\r\n";
 
             // а)
 
@@ -662,6 +655,12 @@ namespace WinFormsApp1
                 fl1 = func_laplace(x1);
                 fl2 = func_laplace(x2);
             }
+
+            string task = $"В каждом из {n} независимых испытаний событие" +
+                $" А происходит с постоянной вероятностью {prob}. Найти " +
+                $"вероятность того, что событие А наступит:" +
+                $"а) точно {k} раз;б) менее " +
+                $"чем {k2} и более чем {k1} раз.";
 
             double res = Math.Abs(fl2 - fl1);
             answer += "; б) " + Math.Round(res, 4).ToString();
@@ -767,6 +766,7 @@ namespace WinFormsApp1
 
         public static Tuple<string, string, string[], string[,]> task5_2_generate()
         {
+            Random rnd = new();
             double prob = (double)(rnd.Next(1, 10)) / 10;
             int n = 5;
 
@@ -795,18 +795,18 @@ namespace WinFormsApp1
             }
             DX -= Math.Pow(MX, 2);
 
-            string answer = "M(X) = " + Math.Round(MX, 4).ToString()
-                + "\nD(X) = " + Math.Round(DX, 4).ToString();
+            string answer = "M(X) = " + Math.Round(MX, 6).ToString()
+                + "\nD(X) = " + Math.Round(DX, 6).ToString();
 
             string[] answer_table_headers = { "X", "p" };
 
-            string[,] answer_table_matrix = new string[2, n];
-            for (int i = 0; i < n; i++)
-                answer_table_matrix[0, i] = (i + 1).ToString();
-            
-            for (int i = 0; i < n; i++)
+            string[,] answer_table_matrix = new string[2, n + 1];
+            for (int i = 0; i < n + 1; i++)
+                answer_table_matrix[0, i] = i.ToString();
+
+            for (int i = 0; i < n + 1; i++)
             {
-                answer_table_matrix[1, i] = (Math.Round(distribution_series[i], 4).ToString());
+                answer_table_matrix[1, i] = (Math.Round(distribution_series[i], 6).ToString());
             }
 
             return new Tuple<string, string, string[], string[,]>(task, answer, answer_table_headers, answer_table_matrix);
@@ -829,7 +829,7 @@ namespace WinFormsApp1
                                  { "", "", "...", "", "...", "" } };
 
             values[1, 0] = q.ToString() + "^" + n.ToString();
-            values[1, 1] = q.ToString() + "^" + (n - 1).ToString()
+            values[1, 1] = n + "*" + q.ToString() + "^" + (n - 1).ToString()
                 + "*" + prob.ToString() + "^1";
             values[1, 3] = "C(" + n.ToString() + ", k)*" + prob.ToString()
                 + "^k*" + q.ToString() + "^(" + n.ToString() + "-k)";
@@ -849,6 +849,7 @@ namespace WinFormsApp1
 
         public static Tuple<string, string, string[,], string[,], string[,], string[,], string> task5_4_generate()
         {
+            Random rnd = new();
             List<int> x_values = new List<int> { 2, 4, 5 };
             List<int> y_values = new List<int> { -1, 1 };
 
@@ -911,7 +912,7 @@ namespace WinFormsApp1
                 + ", M(Y) = " + Math.Round(MY, 4) + ", D(Y) = " + Math.Round(DY, 4) + "\n\n";
 
             List<int> z1_values = new List<int>();
-            for (int i = 0;i < x_values.Count; i++)
+            for (int i = 0; i < x_values.Count; i++)
             {
                 for (int j = 0; j < y_values.Count; j++)
                 {
@@ -953,10 +954,10 @@ namespace WinFormsApp1
             }
             answer += "2)\n";
 
-            string[,] answer_matrix_Z1 = new string[2, 3];
-            for (int i = 0; i < 3; i++)
+            string[,] answer_matrix_Z1 = new string[2, z1_values.Count];
+            for (int i = 0; i < z1_values.Count; i++)
                 answer_matrix_Z1[0, i] = z1_values[i].ToString();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < z1_values.Count; i++)
                 answer_matrix_Z1[1, i] = Math.Round(pz1[i], 4).ToString();
 
             List<double> pz2 = new List<double>();
@@ -979,10 +980,10 @@ namespace WinFormsApp1
                 }
             }
 
-            string[,] answer_matrix_Z2 = new string[2, 3];
-            for (int i = 0; i < 3; i++)
+            string[,] answer_matrix_Z2 = new string[2, z2_values.Count];
+            for (int i = 0; i < z2_values.Count; i++)
                 answer_matrix_Z2[0, i] = z2_values[i].ToString();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < z2_values.Count; i++)
                 answer_matrix_Z2[1, i] = Math.Round(pz2[i], 4).ToString();
 
             double MZ1 = 0.0;
@@ -1025,8 +1026,8 @@ namespace WinFormsApp1
             double prob = (double)rnd.Next(8000, 9999) / 10000.0;
             string task = "\tСтанок-автомат изготавливает валики, контролируя" +
                 " их диаметр X. Считая, что X распределено нормально" +
-                " (m = 10 мм, σ = 0,1 мм), найти интервал, в котором с" +
-                " вероятностью " + prob + " будут заключены диаметры изготавливаемых валиков";
+                $" (m = {m} мм, σ = 0,1 мм), найти интервал, в котором с" +
+                $" вероятностью {prob} будут заключены диаметры изготавливаемых валиков";
             NormalDistribution norm = new NormalDistribution(0, 1);
 
             double z1 = norm.InverseDistributionFunction((1 - prob) / 2);

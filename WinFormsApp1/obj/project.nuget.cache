@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "wwxn0uTtCnGKw6K9fsFVxGRBRpV1oGDW+REafGxNZGH8q7rCizIZCCgIq2ymVV9NiDT5C8Q+r2BRgU7hdXLCKg==",
+  "dgSpecHash": "8UcWgVtZe/JcoSfth9+xXEXFdPXSHY+HBm+FT/uMKpfFkCkGqjMt5kMZ1/uYC2YS3dJ9QROB5lrHDcSC6KZLYQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Sergey\\Visual Studio\\C#\\WinFormsApp1\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "C:\\Users\\varte\\Desktop\\c+++\\c#\\variantMakerTP\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Sergey\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\accord.statistics\\3.8.0\\accord.statistics.3.8.0.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
+    "C:\\Users\\varte\\.nuget\\packages\\accord\\3.8.0\\accord.3.8.0.nupkg.sha512",
+    "C:\\Users\\varte\\.nuget\\packages\\accord.math\\3.8.0\\accord.math.3.8.0.nupkg.sha512",
+    "C:\\Users\\varte\\.nuget\\packages\\accord.statistics\\3.8.0\\accord.statistics.3.8.0.nupkg.sha512",
+    "C:\\Users\\varte\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
+    "C:\\Users\\varte\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
+    "C:\\Users\\varte\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
   ],
   "logs": []
 }
