@@ -357,7 +357,7 @@ namespace WinFormsApp1
             int tridesyat = rnd.Next(2, 5);
             int pyatihat = n - chervonets - tridesyat;
 
-            int k = rnd.Next(3, 5);
+            int k = 3;
 
             string task = "В кассе осталось " + chervonets + " билетов" +
                 " по 10 рублей, " + tridesyat + " — по 30 рублей" +
@@ -368,20 +368,18 @@ namespace WinFormsApp1
 
             n = chervonets + tridesyat + pyatihat;
 
-            // a)
-            int total_outcomes = combinations(n, k);
-            int favorable_outcomes = n * k * 2;
-            Tuple<int, int> result = reduceFraction(favorable_outcomes, total_outcomes);
-            string answer = "а) " + result.Item1 + "/" + result.Item2;
-
             // б)
-            total_outcomes = combinations(n, k);
-            favorable_outcomes = total_outcomes - n * k * 2;
+            int total_outcomes = n * (n - 1) * (n - 2);
+            int favorable_outcomes2 = n * (n - 1) * (n - 2) - chervonets * tridesyat * pyatihat;
 
-            result = reduceFraction(favorable_outcomes, total_outcomes);
+            Tuple<int, int> result2 = reduceFraction(favorable_outcomes2, total_outcomes);
 
-            answer += "; б) " + result.Item1 + "/" + result.Item2;
+            // a)
+            int favorable_outcomes1 = total_outcomes - favorable_outcomes2;
+            Tuple<int, int> result1 = reduceFraction(favorable_outcomes1, total_outcomes);
 
+            string answer = "а) " + result1.Item1 + "/" + result1.Item2;
+            answer += "; б) " + result2.Item1 + "/" + result2.Item2;
             return new Tuple<string, string>(task, answer);
         }
 
