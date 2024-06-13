@@ -38,32 +38,32 @@ namespace WinFormsApp1
             bool is1 = chapter1Check.Checked, is2 = chapter2Check.Checked, is3 = chapter3Check.Checked, is4 = chapter4Check.Checked, is5 = chapter5Check.Checked, is7 = chapter7Check.Checked;
             if (!is1)
             {
-                
+
                 GenereationConfig.is1 = false;
             }
             if (!is2)
             {
-                
+
                 GenereationConfig.is2 = false;
             }
             if (!is3)
             {
-                
+
                 GenereationConfig.is3 = false;
             }
             if (!is4)
             {
-                
+
                 GenereationConfig.is4 = false;
             }
             if (!is5)
             {
-                
+
                 GenereationConfig.is5 = false;
             }
             if (!is7)
             {
-                
+
                 GenereationConfig.is7 = false;
             }
 
@@ -87,11 +87,11 @@ namespace WinFormsApp1
                     MessageBox.Show("Генерация завершена!");
                     progressBar1.Value = 0;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-                
+
             }
         }
 
@@ -108,18 +108,14 @@ namespace WinFormsApp1
 
             for (int i = 0; i < GenereationConfig.variantAmount; i++)
             {
-                currentNumber = 1;             
+                currentNumber = 1;
                 if (currentVariant > 1) //Промежуток между вариантами
                 {
-                    for (int k = 0; k < 6; k++) //После всех задач подобрать нужное число
-                    {
-                        wordDoc.newParagraph("");
-                        wordDocAnswers.newParagraph("");
-                    }
-                    wordDocAnswers.newParagraph("");
+                    wordDoc.Break();
+                    wordDocAnswers.Break();
                 }
-                wordDoc.newParagraph($"Вариант {currentVariant}");
-                wordDocAnswers.newParagraph($"Вариант {currentVariant++}");
+                wordDoc.newParagraphBold($"Вариант {currentVariant}");
+                wordDocAnswers.newParagraphBold($"Вариант {currentVariant++}");
 
                 //Обновляем ProgressBar
                 progressBar1.PerformStep();
@@ -156,7 +152,7 @@ namespace WinFormsApp1
 
             }
 
-            
+
 
             //Закрытие документа
             wordDoc.closeDocument();
@@ -194,7 +190,7 @@ namespace WinFormsApp1
         private void generateChapter2()
         {
             //wordDoc.newParagraph("ГЛАВА 2");
-            
+
             //1 задание
             for (int i = 0; i < GenereationConfig.amount2_1; i++)
             {
@@ -212,7 +208,7 @@ namespace WinFormsApp1
                 wordDoc.newParagraph(currentNumber.ToString() + ". ");
                 Tuple<string, string> task2_2 = Tasks.task2_2_generate();
                 wordDoc.appendText(task2_2.Item1);
-                
+
                 wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
                 wordDocAnswers.newParagraph(task2_2.Item2);
             }
@@ -225,8 +221,16 @@ namespace WinFormsApp1
                 wordDoc.appendText(task2_3.Item1);
                 //Картинка
                 string projectDirectory = Directory.GetCurrentDirectory();
-                string imagePath = projectDirectory + "/Рисунок5.jpg";
-                wordDoc.InsertAPicture(imagePath);
+                string imagePath = projectDirectory + "/assets/Рисунок5.jpg";
+                try
+                {
+                    wordDoc.InsertAPicture(imagePath);
+                }
+                catch (Exception ex)
+                {
+
+                }
+
                 wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
                 wordDocAnswers.newParagraph(task2_3.Item2);
             }
@@ -315,7 +319,7 @@ namespace WinFormsApp1
                 wordDocAnswers.newParagraph((currentNumber++).ToString() + ".");
                 wordDocAnswers.createTable(task5_1.Item3, task5_1.Item4);
                 wordDocAnswers.newParagraph(task5_1.Item2);
-                
+
             }
 
             //Задание 2

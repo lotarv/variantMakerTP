@@ -81,7 +81,48 @@ namespace WinFormsApp1
 
             currentRun.AppendChild(new Text(text));
             mainPart.Document.Save();
+
+
         }
+
+        public void Break()
+        {
+            // Добавление разрыва страницы
+            currentRun.AppendChild(new Break { Type = BreakValues.Page });
+            mainPart.Document.Save();
+        }
+
+        public void newParagraphBold(string text)
+        {
+            // Создание нового Run с свойствами для жирного шрифта
+
+            currentPara = body.AppendChild(new Paragraph());
+            currentPara.ParagraphProperties = new ParagraphProperties();
+            currentPara.ParagraphProperties.ParagraphStyleId = new ParagraphStyleId() { Val = "TimesNewRomanStyle" };
+
+            // Создание нового Run с свойствами для жирного шрифта и указанного размера
+            Run runWithBoldAndSize = new Run();
+            RunProperties runProps = new RunProperties();
+
+            // Установка жирного шрифта
+            Bold bold = new Bold();
+            runProps.Append(bold);
+
+            // Установка размера шрифта
+            FontSize fontSize = new FontSize() { Val = "28" };
+            runProps.Append(fontSize);
+
+            runWithBoldAndSize.RunProperties = runProps; // Применение свойств к Run
+
+            // Добавление текста в Run
+            runWithBoldAndSize.Append(new Text(text));
+
+            // Добавление Run в текущий абзац
+            currentPara.Append(runWithBoldAndSize);
+
+            mainPart.Document.Save();
+        }
+
 
         public void InsertAPicture(string fileName)
         {
